@@ -11,6 +11,49 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 
 app.get('/', (req, res) => {
+    graphqlAuth(`query MyQuery {
+        organization(login: "cmda-minor-web") {
+          name
+          repositories(last: 1) {
+            edges {
+              node {
+                name
+                forks(first: 100) {
+                  edges {
+                    node {
+                      owner {
+                        login
+                      }
+                      defaultBranchRef {
+                        repository {
+                          name
+                        }
+                        target {
+                          ... on Commit {
+                            history(first: 100) {
+                              edges {
+                                node {
+                                  author {
+                                    name
+                                  }
+                                  message
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }`)
+        .then(data => console.log(data))
+        .catch(err => console.log(err))
+
     res.render('index');
 });
 
