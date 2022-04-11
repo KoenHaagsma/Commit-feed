@@ -21,12 +21,12 @@ app.get('/score', (req, res) => {
             repositories(last: 1) {
             edges {
                 node {
-                name
+                    name
                 forks(first: 100) {
                     edges {
                     node {
                         owner {
-                        login
+                            login
                         }
                         defaultBranchRef {
                         repository {
@@ -56,7 +56,11 @@ app.get('/score', (req, res) => {
         }
     }`)
         .then((data) => {
-            console.log(data);
+            console.log(data.organization.repositories.edges[0].node.forks.edges[0].node.owner.login);
+            console.log(
+                data.organization.repositories.edges[0].node.forks.edges[0].node.defaultBranchRef.target.history.edges
+                    .length,
+            );
         })
         .catch((err) => {
             console.error(err);
