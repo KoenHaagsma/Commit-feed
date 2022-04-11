@@ -1,0 +1,32 @@
+body {
+	/* background-color: white; */
+	margin: 0;
+	padding: 0;
+	background-color: #eeede7;
+	color: black;
+}
+.navBar ul {
+	display: flex;
+	list-style: none;
+	justify-content: space-around;
+	margin: 0;
+	padding: 0;
+	background-color: #868b8e;
+}
+
+.navBar ul li {
+	text-decoration: none;
+	padding: 2.5vh 0;
+}
+
+.navBar ul li a {
+	flex-grow: 1;
+	text-decoration: none;
+	color: #e7d2cc;
+	font-size: 2vw;
+}
+
+.navBar ul li a:hover {
+	cursor: pointer;
+	text-decoration: underline;
+}
