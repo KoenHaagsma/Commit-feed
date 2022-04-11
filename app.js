@@ -1,5 +1,9 @@
 require('dotenv').config();
 const express = require('express');
+const { graphql } = require('@octokit/graphql');
+const graphqlAuth = graphql.defaults({
+    headers: { authorization: 'token ' + process.env.GRAPH_KEY },
+});
 
 const app = express();
 
