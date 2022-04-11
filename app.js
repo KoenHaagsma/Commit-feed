@@ -4,7 +4,6 @@ const { graphql } = require('@octokit/graphql');
 const graphqlAuth = graphql.defaults({
     headers: { authorization: 'token ' + process.env.GRAPH_KEY },
 });
-
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -13,45 +12,49 @@ app.set('views', './views');
 app.get('/', (req, res) => {
     graphqlAuth(`query MyQuery {
         organization(login: "cmda-minor-web") {
-          name
-          repositories(last: 1) {
+            name
+            repositories(last: 1) {
             edges {
-              node {
-                name
+                node {
+                    name
                 forks(first: 100) {
-                  edges {
+                    edges {
                     node {
-                      owner {
-                        login
-                      }
-                      defaultBranchRef {
+                        owner {
+                            login
+                        }
+                        defaultBranchRef {
                         repository {
-                          name
+                            name
                         }
                         target {
-                          ... on Commit {
+                            ... on Commit {
                             history(first: 100) {
-                              edges {
+                                edges {
                                 node {
-                                  author {
+                                    author {
                                     name
-                                  }
-                                  message
+                                    }
+                                    message
                                 }
-                              }
+                                }
                             }
-                          }
+                            }
                         }
-                      }
+                        }
                     }
-                  }
+                    }
                 }
-              }
+                }
             }
-          }
+            }
         }
-      }`)
-        .then(data => console.log(data))
+    }`)
+        .then(data => {
+            console.log(data.organization.repositories.edges[0].node.forks.edges[0].node.owner.login);
+            console.log(data.organization.repositories.edges[0].node.forks.edges[0].node.defaultBranchRef.target.history.edges.length);
+            console.log(data.organization.repositories.edges[0].node.forks.edges[0].node.defaultBranchRef.repository.name)
+        })
         .catch(err => console.log(err))
 
     res.render('index');
