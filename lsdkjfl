@@ -5,24 +5,28 @@ query MyQuery {
       edges {
         node {
           name
-          forks(last: 100) {
+          forks(first: 100) {
             edges {
               node {
-                name
                 owner {
                   login
                 }
-                updatedAt
                 defaultBranchRef {
-                  name
                   repository {
                     name
                   }
                   target {
                     ... on Commit {
-                      id
-                      message
-                      messageHeadline
+                      history(first: 100) {
+                        edges {
+                          node {
+                            author {
+                              name
+                            }
+                            message
+                          }
+                        }
+                      }
                     }
                   }
                 }
