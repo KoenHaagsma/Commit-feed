@@ -1,0 +1,36 @@
+query MyQuery {
+  organization(login: "cmda-minor-web") {
+    name
+    repositories(last: 1) {
+      edges {
+        node {
+          name
+          forks(last: 100) {
+            edges {
+              node {
+                name
+                owner {
+                  login
+                }
+                updatedAt
+                defaultBranchRef {
+                  name
+                  repository {
+                    name
+                  }
+                  target {
+                    ... on Commit {
+                      id
+                      message
+                      messageHeadline
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
