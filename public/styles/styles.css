@@ -37,7 +37,17 @@ nav ul li a img {
 	width: 2.5em;
 }
 
-nav ul li:hover {
+nav ul a:hover,
+nav ul a:focus,
+.active {
 	cursor: pointer;
+	outline: none;
+	border-radius: 0.5em;
 	background-color: white;
+}
+
+article {
+	background-color: white;
+	width: 75%;
+	border-radius: 0.5em;
 }
