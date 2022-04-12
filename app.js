@@ -54,6 +54,13 @@ app.get('/', (req, res) => {
             console.log(data.organization.repositories.edges[0].node.forks.edges[0].node.owner.login);
             console.log(data.organization.repositories.edges[0].node.forks.edges[0].node.defaultBranchRef.target.history.edges.length);
             console.log(data.organization.repositories.edges[0].node.forks.edges[0].node.defaultBranchRef.repository.name)
+
+            const dataSet = {
+                ownerName = data.organization.repositories.edges[0].node.forks.edges[0].node.owner.login,
+                lengthCommits = data.organization.repositories.edges[0].node.forks.edges[0].node.defaultBranchRef.target.history.edges.length
+            }
+
+            res.render('index', { dataSet });
         })
         .catch(err => console.log(err))
 
