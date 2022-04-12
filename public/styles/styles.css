@@ -1,13 +1,21 @@
 body {
 	margin: auto;
 	padding: 0;
-	background-color: #eeede7;
-	color: black;
+	background-color: #424954;
+	color: white;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
 	max-width: 75em;
+	background-color: #330033;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/images/background-.jpeg');
+	background-repeat: no-repeat;
+	background-position: fixed;
+	background-size: cover;
+	/* background-blend-mode: overlay; */
 }
+
+
 
 nav,
 nav ul {
@@ -21,9 +29,9 @@ nav ul {
 
 nav ul li {
 	text-decoration: none;
-	background-color: #e7d2cc;
+	background-color: #cfcfcf;
 	border-radius: 0.5em;
-	box-shadow: 0.3em 0.3em rgba(231, 210, 204, 0.5);
+	box-shadow: 0.3em 0.3em rgba(187, 185, 185, 0.5);
 }
 
 nav ul li a {
@@ -57,13 +65,19 @@ article {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	background-color: white;
+	background-color: rgba(0, 0, 0, 0.8);
 	width: 75%;
 	border-radius: 0.5em;
 	padding: 0.5em 1em;
 	border: 0.15em solid #e7d2cc;
 	margin-bottom: 1.5em;
-	box-shadow: -5px 0px 13px -7px #000000, 5px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+	box-shadow: -0.3em 0 0.8em -0.43em #000000, 0.3em 0 0.8em -0.43em #000000, 0.3em 0.3em 0.93em 0.3em rgba(0, 0, 0, 0);
+}
+
+#commit-section:hover h2,
+#commit-section:hover p {
+	text-decoration: underline;
+	cursor: pointer;
 }
 
 #commit-section img {
