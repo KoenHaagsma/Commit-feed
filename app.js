@@ -34,29 +34,19 @@ app.get('/profile/:author', (req, res) => {
         }
       }`)
         .then(data => {
+            const baseUrl = data.user;
             const repoArray = [];
-            data.user.repositories.edges.forEach(repo => {
-                return repoArray.push(repo.node)
+            baseUrl.repositories.edges.forEach(repo => {
+                return repoArray.push(repo.node);
             });
             const dataSet = {
-                authorName: data.user.name,
-                avatarUrl: data.user.avatarUrl,
-                bioHTML: data.user.bioHTML,
-                profileRepoName: data.user.repositories,
-                // profileRepoDescription: baseUrl[0].node.defaultBranchRef.target.history.edges[0].node.author.user.repositories.edges[0].node.description,
-                // profileRepoUrl: baseUrl[0].node.defaultBranchRef.target.history.edges[0].node.author.user.repositories.edges[0].node.url,
-                // profileRepoLastUpdate: baseUrl[0].node.defaultBranchRef.target.history.edges[0].node.author.user.repositories.edges[0].node.updatedAt
+                authorName: baseUrl.name,
+                avatarUrl: baseUrl.avatarUrl,
+                bioHTML: baseUrl.bioHTML,
+                profileRepositories: repoArray,
             }
 
-            // console.log(dataSet.authorName)
-            // console.log(dataSet.avatarUrl)
-            // console.log(dataSet.bioHTML)
-            // console.log(dataSet.profileRepoName)
-            // console.log(dataSet.profileRepoDescription)
-            // console.log(dataSet.profileRepoUrl)
-            // console.log(dataSet.profileRepoLastUpdate)
-
-            res.render('profile');
+            res.render('profile', { dataSet });
         })
         .catch(err => console.log(err))
 })
