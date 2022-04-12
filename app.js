@@ -56,11 +56,15 @@ app.get('/score', (req, res) => {
         }
     }`)
         .then((data) => {
-            console.log(data.organization.repositories.edges[0].node.forks.edges[0].node.owner.login);
-            console.log(
-                data.organization.repositories.edges[0].node.forks.edges[0].node.defaultBranchRef.target.history.edges
-                    .length,
-            );
+            const stats = [];
+            data.organization.repositories.edges[0].node.forks.edges.forEach((repo) => {
+                stats.push({
+                    repo_name: `${repo.node.owner.login}/${repo.node.defaultBranchRef.repository.name}`,
+                    repo_commit_count: `${repo.node.defaultBranchRef.target.history.edges.length}`,
+                });
+            });
+            console.log(stats);
+            res.render('highscore.ejs', { data: stats });
         })
         .catch((err) => {
             console.error(err);
