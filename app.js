@@ -17,10 +17,11 @@ app.get('/', (req, res) => {
 
 app.get('/profile/:author', (req, res) => {
     graphqlAuth(`query MyQuery {
-        user(login: "${req.params.author}") {
+        user(login: "dannyfrelink") {
           name
           bioHTML
           avatarUrl
+          createdAt
           repositories(orderBy: {field: CREATED_AT, direction: DESC}, first: 100) {
             edges {
               node {
@@ -28,6 +29,21 @@ app.get('/profile/:author', (req, res) => {
                 description
                 url
                 updatedAt
+                defaultBranchRef {
+                  target {
+                    ... on Commit {
+                      history {
+                        edges {
+                          node {
+                            author {
+                                name
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           }
@@ -35,15 +51,27 @@ app.get('/profile/:author', (req, res) => {
       }`)
         .then(data => {
             const baseUrl = data.user;
+
             const repoArray = [];
             baseUrl.repositories.edges.forEach(repo => {
                 return repoArray.push(repo.node);
             });
+
+            const commitArray = [];
+            baseUrl.repositories.edges[0].node.defaultBranchRef.target.history.edges.forEach((user) => {
+                if (user.node.author.name === req.params.author) {
+                    commitArray.push(user)
+                }
+            });
+
             const dataSet = {
                 authorName: baseUrl.name,
                 avatarUrl: baseUrl.avatarUrl,
+                createdAt: baseUrl.createdAt.split('T')[0],
                 bioHTML: baseUrl.bioHTML,
                 profileRepositories: repoArray,
+                repoAmount: baseUrl.repositories.edges.length,
+                commitAmount: commitArray.length
             }
 
             res.render('profile', { dataSet });
