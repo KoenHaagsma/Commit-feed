@@ -5,8 +5,7 @@ const graphqlAuth = graphql.defaults({
     headers: { authorization: 'token ' + process.env.GRAPH_KEY },
 });
 
-
-const app = express()
+const app = express();
 
 app.use(express.static('public'))
 app.set('view engine', 'ejs')
@@ -20,10 +19,6 @@ app.get('/profile', (req, res) => {
 	res.render('profile')
 })
 
-app.get('/scores', (req, res) => {
-	res.render('scores')
-})
-
 app.get('/score', (req, res) => {
     graphqlAuth(`query MyQuery {
         organization(login: "cmda-minor-web") {
@@ -32,7 +27,7 @@ app.get('/score', (req, res) => {
             edges {
                 node {
                     name
-                forks(first: 60) {
+                forks(first: 100) {
                     edges {
                     node {
                         owner {
@@ -65,20 +60,21 @@ app.get('/score', (req, res) => {
             }
         }
     }`)
-        .then((data) => {
-            const stats = [];
-            data.organization.repositories.edges[0].node.forks.edges.forEach((repo) => {
-                stats.push({
-                    repo_name: `${repo.node.owner.login}/${repo.node.defaultBranchRef.repository.name}`,
-                    repo_commit_count: `${repo.node.defaultBranchRef.target.history.edges.length}`,
-                });
-            });
-            console.log(stats);
-            res.render('highscore.ejs', { stats });
+        .then(data => {
+            console.log(data.organization.repositories.edges[0].node.forks.edges[0].node.owner.login);
+            console.log(data.organization.repositories.edges[0].node.forks.edges[0].node.defaultBranchRef.target.history.edges.length);
+            console.log(data.organization.repositories.edges[0].node.forks.edges[0].node.defaultBranchRef.repository.name)
+
+            const dataSet = {
+                ownerName = data.organization.repositories.edges[0].node.forks.edges[0].node.owner.login,
+                lengthCommits = data.organization.repositories.edges[0].node.forks.edges[0].node.defaultBranchRef.target.history.edges.length
+            }
+
+            res.render('index', { dataSet });
         })
-        .catch((err) => {
-            console.error(err);
-        });
+        .catch(err => console.log(err))
+
+    res.render('index');
 });
 
 app.use((req, res) => {
