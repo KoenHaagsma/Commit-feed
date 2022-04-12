@@ -62,10 +62,17 @@ article {
 	border-radius: 0.5em;
 	padding: 0.5em 1em;
 	border: 0.15em solid #e7d2cc;
+	margin-bottom: 1.5em;
+	box-shadow: -5px 0px 13px -7px #000000, 5px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
 }
 
 #commit-section img {
 	width: 5em;
 	height: 5em;
 	margin-right: 3vw;
+	border-radius: 50%;
+}
+
+#commit-section p {
+	font-style: italic;
 }
