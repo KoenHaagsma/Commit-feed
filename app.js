@@ -85,7 +85,7 @@ app.get('/score', (req, res) => {
 		})
 		.catch(err => console.log(err))
 
-	res.render('index')
+	res.render('scores')
 })
 
 app.use((req, res) => {
