@@ -27,7 +27,6 @@ nav ul li {
 }
 
 nav ul li a {
-	flex-grow: 1;
 	text-decoration: none;
 	color: black;
 	padding: 2vh 3vh;
@@ -56,4 +55,48 @@ article {
 	background-color: white;
 	width: 75%;
 	border-radius: 0.5em;
+}
+
+#profile {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	/* max-width: 100%; */
+}
+
+#profile section:first-of-type {
+	width: 95%;
+	background-color: white;
+	border-radius: 1em;
+	display: flex;
+	justify-content: space-around;
+	position: relative;
+}
+
+#profile section:first-of-type img {
+	width: 5vh;
+	transform: translateY(50%);
+}
+
+#profile section:nth-of-type(2) {
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+#profile section:nth-of-type(2) div {
+	margin: 2.5vh 0;
+	width: 30%;
+	background-color: white;
+	text-align: center;
+	border-radius: 1em;
+}
+
+#profile section:nth-of-type(2) div p,
+#profile section:nth-of-type(2) div h2 {
+	margin: 1.5vh;
+}
+
+#profile section:nth-of-type(2) div h2 {
+	font-size: 4vh;
 }
