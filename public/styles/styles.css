@@ -29,12 +29,18 @@ nav ul li {
 nav ul li a {
 	flex-grow: 1;
 	text-decoration: none;
+	color: black;
 	padding: 2vh 3vh;
 	display: block;
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: center;
+	width: 8.5vh;
 }
 
 nav ul li a img {
 	width: 2.5em;
+	padding-bottom: 1vh;
 }
 
 nav ul a:hover,
