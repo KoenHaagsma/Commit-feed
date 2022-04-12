@@ -22,7 +22,7 @@ app.get('/score', (req, res) => {
             edges {
                 node {
                     name
-                forks(first: 100) {
+                forks(first: 60) {
                     edges {
                     node {
                         owner {
@@ -64,7 +64,7 @@ app.get('/score', (req, res) => {
                 });
             });
             console.log(stats);
-            res.render('highscore.ejs', { data: stats });
+            res.render('highscore.ejs', { stats });
         })
         .catch((err) => {
             console.error(err);
