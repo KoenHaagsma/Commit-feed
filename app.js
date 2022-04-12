@@ -12,14 +12,6 @@ app.set('view engine', 'ejs')
 app.set('views', './views')
 
 app.get('/', (req, res) => {
-    res.render('index')
-})
-
-app.get('/profile', (req, res) => {
-    res.render('profile')
-})
-
-app.get('/score', (req, res) => {
     graphqlAuth(`query MyQuery {
         organization(login: "cmda-minor-web") {
           name
@@ -52,7 +44,6 @@ app.get('/score', (req, res) => {
                                           node {
                                             name
                                             description
-                                            createdAt
                                             url
                                             updatedAt
                                           }
@@ -76,20 +67,25 @@ app.get('/score', (req, res) => {
         }
       }`)
         .then(data => {
-            console.log(data.organization.repositories.edges[0].node.forks.edges[0].node.owner.login);
-            console.log(data.organization.repositories.edges[0].node.forks.edges[0].node.defaultBranchRef.target.history.edges.length);
-            console.log(data.organization.repositories.edges[0].node.forks.edges[0].node.defaultBranchRef.repository.name)
+            console.log(data.organization.repositories.edges[0].node.forks.edges[0].node.defaultBranchRef.target.history.edges[0].node.author.name);
+            console.log(data.organization.repositories.edges[0].node.forks.edges[0].node.defaultBranchRef.target.history.edges[0].node.author.user.avatarUrl);
+            console.log(data.organization.repositories.edges[0].node.forks.edges[0].node.defaultBranchRef.target.history.edges[0].node.author.user.bioHTML);
+            console.log(data.organization.repositories.edges[0].node.forks.edges[0].node.defaultBranchRef.target.history.edges[0].node.author.user.repositories.edges[0].node.name)
+            console.log(data.organization.repositories.edges[0].node.forks.edges[0].node.defaultBranchRef.target.history.edges[0].node.author.user.repositories.edges[0].node.description)
+            console.log(data.organization.repositories.edges[0].node.forks.edges[0].node.defaultBranchRef.target.history.edges[0].node.author.user.repositories.edges[0].node.url)
+            console.log(data.organization.repositories.edges[0].node.forks.edges[0].node.defaultBranchRef.target.history.edges[0].node.author.user.repositories.edges[0].node.updatedAt)
 
-            const dataSet = {
-                ownerName: data.organization.repositories.edges[0].node.forks.edges[0].node.owner.login,
-                lengthCommits: data.organization.repositories.edges[0].node.forks.edges[0].node.defaultBranchRef.target.history.edges.length
-            }
-
-            res.render('index', { dataSet });
+            res.render('index');
         })
         .catch(err => console.log(err))
+})
 
-    res.render('index');
+app.get('/profile', (req, res) => {
+    res.render('profile')
+})
+
+app.get('/score', (req, res) => {
+    res.render('scores');
 });
 
 app.use((req, res) => {
