@@ -6,6 +6,4 @@ if (window.location.pathname == '/') {
 	home.classList.add('active')
 } else if (window.location.pathname == '/score') {
 	trophy.classList.add('active')
-} else if (window.location.pathname == '/profile') {
-	profile.classList.add('active')
 }

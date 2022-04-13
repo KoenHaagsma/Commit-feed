@@ -9,21 +9,27 @@ body {
 	max-width: 75em;
 }
 
-nav,
 nav ul {
 	display: flex;
 	list-style: none;
-	justify-content: space-between;
+	justify-content: center;
 	margin: 1.5vh 0;
 	padding: 0;
-	width: 100%;
+	background-color: #e7d2cc;
 }
 
 nav ul li {
 	text-decoration: none;
-	background-color: #e7d2cc;
-	border-radius: 0.5em;
-	box-shadow: 0.3em 0.3em rgba(231, 210, 204, 0.5);
+	padding: 0;
+	border: solid 0.25em white;
+}
+
+nav ul li:nth-of-type(1) {
+	border-right: solid 0.125em white;
+}
+
+nav ul li:nth-of-type(2) {
+	border-left: solid 0.125em white;
 }
 
 nav ul li a {
@@ -34,12 +40,12 @@ nav ul li a {
 	display: flex;
 	flex-direction: column-reverse;
 	align-items: center;
-	width: 8.5vh;
+	width: 15vh;
 }
 
 nav ul li a img {
-	width: 2.5em;
-	padding-bottom: 1vh;
+	width: 2em;
+	/* padding-bottom: 1vh; */
 }
 
 nav ul a:hover,
@@ -47,7 +53,8 @@ nav ul a:focus,
 .active {
 	cursor: pointer;
 	outline: none;
-	border-radius: 0.5em;
+	margin: 0;
+	/* border-radius: 0.5em; */
 	background-color: white;
 }
 
@@ -201,17 +208,22 @@ article {
 #leaderboard section:nth-of-type(1) div {
 	display: flex;
 	align-items: center;
-	justify-content: baseline;
 	flex-direction: column-reverse;
 	width: 25%;
 	position: relative;
 }
 
-#leaderboard section:nth-of-type(1) div p,
-#leaderboard section:nth-of-type(1) div h2,
-#leaderboard section:nth-of-type(1) div img {
+#leaderboard section:nth-of-type(1) div h2 {
 	margin: 0;
 	padding: 0;
+}
+
+#leaderboard section:nth-of-type(1) div img {
+	margin: 2.5vh 0 1vh 0;
+}
+
+#leaderboard section:nth-of-type(1) div p {
+	margin: 0 0 5vh;
 }
 
 #leaderboard section:nth-of-type(1) img {
@@ -219,6 +231,24 @@ article {
 	object-fit: fill;
 	border-radius: 50%;
 	background-color: white;
+}
+
+#leaderboard section:nth-of-type(1) div:nth-of-type(1) img,
+#leaderboard section:nth-of-type(1) div:nth-of-type(1) h2,
+#leaderboard section:nth-of-type(1) div:nth-of-type(1) p {
+	animation: podium2 2.5s ease;
+}
+
+#leaderboard section:nth-of-type(1) div:nth-of-type(2) img,
+#leaderboard section:nth-of-type(1) div:nth-of-type(2) h2,
+#leaderboard section:nth-of-type(1) div:nth-of-type(2) p {
+	animation: podium1 2.5s ease;
+}
+
+#leaderboard section:nth-of-type(1) div:nth-of-type(3) img,
+#leaderboard section:nth-of-type(1) div:nth-of-type(3) h2,
+#leaderboard section:nth-of-type(1) div:nth-of-type(3) p {
+	animation: podium3 2.5s ease;
 }
 
 #leaderboard section:nth-of-type(1) div:nth-of-type(1) div {
@@ -355,7 +385,42 @@ article {
 	text-decoration: underline;
 }
 
-/* #leaderboard section:nth-of-type(2) article:hover > div p {
-	background-color: white;
-	color: black;
-} */
+@keyframes podium1 {
+	0% {
+		transform: translatey(-50%);
+		opacity: 0%;
+	}
+
+	60%,
+	100% {
+		transform: translateX(0%);
+		opacity: 100%;
+	}
+}
+
+@keyframes podium2 {
+	0%,
+	20% {
+		transform: translatey(-50%);
+		opacity: 0%;
+	}
+
+	80%,
+	100% {
+		transform: translateX(0%);
+		opacity: 100%;
+	}
+}
+
+@keyframes podium3 {
+	0%,
+	40% {
+		transform: translatey(-50%);
+		opacity: 0%;
+	}
+
+	100% {
+		transform: translateX(0%);
+		opacity: 100%;
+	}
+}
