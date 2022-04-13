@@ -49,8 +49,9 @@ nav ul li a img {
 }
 
 nav ul li:hover a img {
-	transition: 0.5s;
-	transform: scaleX(-1);
+	transition: 0.75s ease;
+	transform: rotateY(360deg);
+	/* transform: scaleX(-1); */
 }
 
 nav ul a:hover,
