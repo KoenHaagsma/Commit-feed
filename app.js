@@ -1,4 +1,3 @@
-
 require('dotenv').config();
 const express = require('express');
 const {
@@ -25,7 +24,7 @@ app.get('/profile', (req, res) => {
 });
 
 app.get('/score', (req, res) => {
-	graphqlAuth(`query MyQuery {
+    graphqlAuth(`query MyQuery {
         organization(login: "cmda-minor-web") {
           name
           repository(name: "project-2-2122") {
@@ -90,8 +89,7 @@ app.get('/score', (req, res) => {
 
             baseURL.forEach((repo) => {
                 stats.push({
-                    [`${repo.node.owner.login}/${repo.node.name}`]:
-                        repo.node.defaultBranchRef.target.history.edges.length,
+                    [`${repo.node.owner.login}/${repo.node.name}`]: repo.node.defaultBranchRef.target.history.edges.length,
                 });
             });
 
@@ -100,7 +98,10 @@ app.get('/score', (req, res) => {
             console.log(sortedJustStudents);
             console.log(sortedAllStats);
 
-            res.render('scores.ejs', { person_commit_count: sortedAllStats, person_commit_count: sortedJustStudents });
+            res.render('scores', {
+                person_commit_count: sortedAllStats,
+                person_commit_count: sortedJustStudents
+            });
         })
         .catch((err) => {
             console.error(err);
@@ -128,7 +129,10 @@ function sortBasedOnValue(obj) {
     });
 
     sortable.forEach((key, value) => {
-        sortedArray.push({ name: key[0], count: key[1] });
+        sortedArray.push({
+            name: key[0],
+            count: key[1]
+        });
     });
 
     return sortedArray;
