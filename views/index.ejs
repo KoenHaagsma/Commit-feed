@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <%- include('partials/head'); %>
+    </head>
 
-<head>
-	<%- include('partials/head'); %>
-</head>
-
-<body>
-	<%- include('partials/header'); %>
-	<h1>Commits </h1>
-	<%- include('partials/commit'); %>
-</body>
-
+    <body>
+        <%- include('partials/header'); %>
+        <h1>Commits</h1>
+        <% commits.forEach((commit) => { %>
+        <a id="commit-section" href="/profile/<%= commit.node.author.user.login %>">
+            <article>
+                <div>
+                    <div>
+                        <img
+                            id="avatar-homepage"
+                            src="<%= commit.node.author.user.avatarUrl %>"
+                            alt="<%= commit.node.author.name%> Image"
+                        />
+                        <h2><%= commit.node.author.name %></h2>
+                    </div>
+                    <div>
+                        <p><%= commit.node.committedDate.split('T')[0]%></p>
+                        <p><%= commit.node.committedDate.split('T')[1].split('Z')[0]%></p>
+                    </div>
+                </div>
+                <p><%= commit.node.message %></p>
+            </article>
+        </a>
+        <% }) %>
+    </body>
 </html>
