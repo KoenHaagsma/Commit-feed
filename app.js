@@ -1,9 +1,14 @@
-require('dotenv').config()
-const express = require('express')
-const { graphql } = require('@octokit/graphql')
+
+require('dotenv').config();
+const express = require('express');
+const {
+    graphql
+} = require('@octokit/graphql');
 const graphqlAuth = graphql.defaults({
-	headers: { authorization: 'token ' + process.env.GRAPH_KEY },
-})
+    headers: {
+        authorization: 'token ' + process.env.GRAPH_KEY
+    },
+});
 
 const app = express()
 
@@ -12,11 +17,11 @@ app.set('view engine', 'ejs')
 app.set('views', './views')
 
 app.get('/', (req, res) => {
-	res.render('index')
+    res.render('index')
 })
 
 app.get('/profile', (req, res) => {
-	res.render('profile')
+    res.render('profile')
 })
 
 app.get('/score', (req, res) => {
@@ -73,25 +78,24 @@ app.get('/score', (req, res) => {
 					.repository.name
 			)
 
-			const dataSet = {
-				ownerName:
-					data.organization.repositories.edges[0].node.forks.edges[0].node.owner.login,
-				lengthCommits:
-					data.organization.repositories.edges[0].node.forks.edges[0].node
-						.defaultBranchRef.target.history.edges.length,
-			}
+            const dataSet = {
+                ownerName: data.organization.repositories.edges[0].node.forks.edges[0].node.owner.login,
+                lengthCommits: data.organization.repositories.edges[0].node.forks.edges[0].node.defaultBranchRef.target.history.edges.length
+            }
 
-			res.render('index', { dataSet })
-		})
-		.catch(err => console.log(err))
+            res.render('index', {
+                dataSet
+            });
+        })
+        .catch(err => console.log(err))
 
-	res.render('scores')
-})
+    res.render('scores');
+});
 
 app.use((req, res) => {
-	res.status(404).render('error404')
+    res.status(404).render('error404')
 })
 
 app.listen(process.env.PORT, () => {
-	console.log(`Application started on port: http://localhost:${process.env.PORT}`)
+    console.log(`Application started on port: http://localhost:${process.env.PORT}`)
 })
