@@ -1,3 +1,4 @@
+
 require('dotenv').config();
 const express = require('express');
 const {
@@ -9,7 +10,7 @@ const graphqlAuth = graphql.defaults({
     },
 });
 
-const app = express();
+const app = express()
 
 app.use(express.static('public'))
 app.set('view engine', 'ejs')
@@ -24,7 +25,7 @@ app.get('/profile', (req, res) => {
 })
 
 app.get('/score', (req, res) => {
-    graphqlAuth(`query MyQuery {
+	graphqlAuth(`query MyQuery {
         organization(login: "cmda-minor-web") {
             name
             repositories(last: 1) {
@@ -64,10 +65,18 @@ app.get('/score', (req, res) => {
             }
         }
     }`)
-        .then(data => {
-            console.log(data.organization.repositories.edges[0].node.forks.edges[0].node.owner.login);
-            console.log(data.organization.repositories.edges[0].node.forks.edges[0].node.defaultBranchRef.target.history.edges.length);
-            console.log(data.organization.repositories.edges[0].node.forks.edges[0].node.defaultBranchRef.repository.name)
+		.then(data => {
+			console.log(
+				data.organization.repositories.edges[0].node.forks.edges[0].node.owner.login
+			)
+			console.log(
+				data.organization.repositories.edges[0].node.forks.edges[0].node.defaultBranchRef
+					.target.history.edges.length
+			)
+			console.log(
+				data.organization.repositories.edges[0].node.forks.edges[0].node.defaultBranchRef
+					.repository.name
+			)
 
             const dataSet = {
                 ownerName: data.organization.repositories.edges[0].node.forks.edges[0].node.owner.login,
