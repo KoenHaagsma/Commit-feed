@@ -74,6 +74,8 @@ app.get('/profile/:author', (req, res) => {
                 commitAmount: commitArray.length
             }
 
+            console.log(dataSet.profileRepositories)
+
             res.render('profile', { dataSet });
         })
         .catch(err => console.log(err))

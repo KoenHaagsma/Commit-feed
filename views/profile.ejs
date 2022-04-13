@@ -1,10 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<%- include('partials/head'); %>
-	</head>
-	<body>
-		<%- include('partials/header'); %>
-		<h1>Profile</h1>
-	</body>
+
+<head>
+    <%- include('partials/head'); %>
+</head>
+
+<body>
+    <%- include('partials/header'); %>
+        <main id="profile">
+            <section>
+                <div>
+                    <img src="<%= dataSet.avatarUrl %>" alt="Profile picture" />
+                </div>
+                <div>
+                    <h1>
+                        <%= dataSet.authorName %>
+                    </h1>
+                    <% if(dataSet.bioHTML) { %>
+                        <%= dataSet.bioHTML %>
+                            <% } %>
+                </div>
+            </section>
+            <section>
+                <div>
+                    <h2>
+                        <%= dataSet.repoAmount %>
+                    </h2>
+                    <p>Amount of repositories</p>
+                </div>
+                <div>
+                    <h2>
+                        <%= dataSet.commitAmount %>
+                    </h2>
+                    <p>Amount commits last project</h>
+                </div>
+                <div>
+                    <h2>
+                        <%= dataSet.createdAt %>
+                    </h2>
+                    <p>Started since</p>
+                </div>
+            </section>
+            <section>
+                <% dataSet.profileRepositories.forEach(function(repo) { %>
+                    <a href="<%= repo.url %>" target="_blank">
+                        <div>
+                            <h2>
+                                <%= repo.name %>
+                            </h2>
+                            <p> Last updated at:
+                                <%= repo.updatedAt.split('T')[0] %>
+                            </p>
+                        </div>
+                        <% if(repo.description) { %>
+                            <p>
+                                <%= repo.description %>
+                            </p>
+                            <% } %>
+                    </a>
+                    <% }) %>
+            </section>
+        </main>
+</body>
+
 </html>
