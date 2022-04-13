@@ -24,7 +24,7 @@ app.get('/profile/:author', (req, res) => {
     graphqlAuth(`query MyQuery {
         user(login: "${req.params.author}") {
           name
-          bioHTML
+          bio
           avatarUrl
           createdAt
           repositories(orderBy: {field: CREATED_AT, direction: DESC}, first: 100) {
@@ -73,7 +73,7 @@ app.get('/profile/:author', (req, res) => {
                 authorName: baseUrl.name,
                 avatarUrl: baseUrl.avatarUrl,
                 createdAt: baseUrl.createdAt.split('T')[0],
-                bioHTML: baseUrl.bioHTML,
+                bio: baseUrl.bio,
                 profileRepositories: repoArray,
                 repoAmount: baseUrl.repositories.edges.length,
                 commitAmount: commitArray.length
