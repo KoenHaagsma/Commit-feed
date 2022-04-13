@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
 
 app.get('/profile/:author', (req, res) => {
     graphqlAuth(`query MyQuery {
-        user(login: "dannyfrelink") {
+        user(login: "${req.params.author}") {
           name
           bioHTML
           avatarUrl
@@ -48,7 +48,7 @@ app.get('/profile/:author', (req, res) => {
             }
           }
         }
-      }`)
+    }`)
         .then(data => {
             const baseUrl = data.user;
 
