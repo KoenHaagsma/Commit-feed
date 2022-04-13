@@ -122,7 +122,8 @@ app.get('/profile/:author', (req, res) => {
 
             const commitArray = [];
             baseUrl.repositories.edges[0].node.defaultBranchRef.target.history.edges.forEach((user) => {
-                if (user.node.author.name === req.params.author) {
+                const username = user.node.author.name.split(' ').join('');
+                if (username.toLowerCase() === req.params.author) {
                     commitArray.push(user)
                 }
             });
@@ -136,8 +137,6 @@ app.get('/profile/:author', (req, res) => {
                 repoAmount: baseUrl.repositories.edges.length,
                 commitAmount: commitArray.length
             }
-
-            console.log(dataSet.profileRepositories)
 
             res.render('profile', { dataSet });
         })
