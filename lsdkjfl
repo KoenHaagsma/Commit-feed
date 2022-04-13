@@ -22,10 +22,63 @@ query MyQuery {
                           node {
                             author {
                               name
+                              user {
+                                avatarUrl
+                                bioHTML
+                                repositories(last: 10) {
+                                  edges {
+                                    node {
+                                      name
+                                      description
+                                      createdAt
+                                      url
+                                      updatedAt
+                                    }
+                                  }
+                                }
+                              }
                             }
                             message
                           }
                         }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+query MyQuery {
+  user(login: "dannyfrelink") {
+    name
+    bioHTML
+    avatarUrl
+    createdAt
+    repositories(orderBy: {field: CREATED_AT, direction: DESC}, first: 100) {
+      edges {
+        node {
+          name
+          description
+          url
+          updatedAt
+          defaultBranchRef {
+            target {
+              ... on Commit {
+                history {
+                  edges {
+                    node {
+                      author {
+                        name
                       }
                     }
                   }
