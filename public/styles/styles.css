@@ -46,7 +46,11 @@ nav ul li a {
 
 nav ul li a img {
 	width: 2em;
-	/* padding-bottom: 1vh; */
+}
+
+nav ul li:hover a img {
+	transition: 0.5s;
+	transform: scaleX(-1);
 }
 
 nav ul a:hover,
