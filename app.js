@@ -1,11 +1,16 @@
+
 require('dotenv').config();
 const express = require('express');
-const { graphql } = require('@octokit/graphql');
+const {
+    graphql
+} = require('@octokit/graphql');
 const graphqlAuth = graphql.defaults({
-    headers: { authorization: 'token ' + process.env.GRAPH_KEY },
+    headers: {
+        authorization: 'token ' + process.env.GRAPH_KEY
+    },
 });
 
-const app = express();
+const app = express()
 
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
@@ -20,7 +25,7 @@ app.get('/profile', (req, res) => {
 });
 
 app.get('/score', (req, res) => {
-    graphqlAuth(`query MyQuery {
+	graphqlAuth(`query MyQuery {
         organization(login: "cmda-minor-web") {
           name
           repository(name: "project-2-2122") {
