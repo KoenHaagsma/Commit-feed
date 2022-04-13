@@ -1,43 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<%- include('partials/head'); %>
-	</head>
-	<body>
-		<%- include('partials/header'); %>
-		<main id="leaderboard">
-			<section>
-				<div>
-					<div></div>
-					<p>commits</p>
-					<h2>Name</h2>
-					<img src="images/avatar.png" alt="" />
-				</div>
-				<div>
-					<div></div>
-					<p>commits</p>
-					<h2>Name</h2>
-					<img src="images/avatar.png" alt="" />
-				</div>
-				<div>
-					<div></div>
-					<p>commits</p>
-					<h2>Name</h2>
-					<img src="images/avatar.png" alt="" />
-				</div>
-			</section>
-			<section>
-				<article>
-					<div>
-						<h2>4</h2>
-						<img src="images/avatar.png" alt="" />
-						<p>Name user</p>
-					</div>
-					<div>
-						<p>amount of commits</p>
-					</div>
-				</article>
-			</section>
-		</main>
-	</body>
+    <head>
+        <%- include('partials/head'); %>
+    </head>
+    <body>
+        <%- include('partials/header'); %>
+        <main id="leaderboard">
+            <section>
+                <!-- Second place -->
+                <a href="profile/<%= person_commit_count[1].name.toLowerCase() %>">
+                    <div></div>
+                    <p><%= person_commit_count[1].count %> Commits</p>
+                    <h2><%= person_commit_count[1].name %></h2>
+                    <img src="<%=person_commit_count[1].avatarUrl %>" alt="<%=person_commit_count[1].name %> Image" />
+                </a>
+                <!-- First place -->
+                <a href="profile/<%= person_commit_count[0].name.toLowerCase() %>">
+                    <div></div>
+                    <p><%= person_commit_count[0].count %> Commits</p>
+                    <h2><%= person_commit_count[0].name %></h2>
+                    <img src="<%=person_commit_count[0].avatarUrl %>" alt="<%=person_commit_count[0].name %> Image" />
+                </a>
+                <!-- Third place -->
+                <a href="profile/<%= person_commit_count[2].name.toLowerCase() %>">
+                    <div></div>
+                    <p><%= person_commit_count[2].count %> Commits</p>
+                    <h2><%= person_commit_count[2].name %></h2>
+                    <img src="<%=person_commit_count[2].avatarUrl %>" alt="<%=person_commit_count[2].name %> Image" />
+                </a>
+            </section>
+            <section>
+                <% for(var i = 4; i < person_commit_count.length; i++) { %>
+                <a href="profile/<%= person_commit_count[i].name.toLowerCase() %>">
+                    <div>
+                        <h2><%= i %></h2>
+                        <img src="<%=person_commit_count[i].avatarUrl %>" alt="" />
+                        <p><%= person_commit_count[i].name %></p>
+                    </div>
+                    <div>
+                        <p><%= person_commit_count[i].count %></p>
+                    </div>
+                </a>
+                <% } %>
+            </section>
+        </main>
+    </body>
 </html>
