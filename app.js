@@ -9,9 +9,9 @@ const graphqlAuth = graphql.defaults({
 
 const app = express();
 
-app.use(express.static('public'));
-app.set('view engine', 'ejs');
-app.set('views', './views');
+app.use(express.static('public'))
+app.set('view engine', 'ejs')
+app.set('views', './views')
 
 app.get('/', (req, res) => {
     graphqlAuth(`query MyQuery {
@@ -258,25 +258,24 @@ app.get('/score', (req, res) => {
 });
 
 app.use((req, res) => {
-    res.status(404).render('error404');
-});
+	res.status(404).render('error404')
+})
 
 app.listen(process.env.PORT, () => {
-    console.log(`Application started on port: http://localhost:${process.env.PORT}`);
-});
+	console.log(`Application started on port: http://localhost:${process.env.PORT}`)
+})
 
 // Sort Keys based on values given
 function sortBasedOnValue(obj) {
-    const sortable = [];
-    const sortedArray = [];
-    for (var single in obj) {
-        sortable.push([single, obj[single]]);
-    }
+	const sortable = []
+	const sortedArray = []
+	for (var single in obj) {
+		sortable.push([single, obj[single]])
+	}
 
-    sortable.sort((a, b) => {
-        return b[1] - a[1];
-    });
-
+	sortable.sort((a, b) => {
+		return b[1] - a[1]
+	})
     sortable.forEach((key, value) => {
         sortedArray.push({
             name: key[0],
