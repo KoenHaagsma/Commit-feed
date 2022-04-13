@@ -16,6 +16,7 @@ nav ul {
 	margin: 1.5vh 0;
 	padding: 0;
 	background-color: #e7d2cc;
+	border-radius: 5vw;
 }
 
 nav ul li {
@@ -26,10 +27,14 @@ nav ul li {
 
 nav ul li:nth-of-type(1) {
 	border-right: solid 0.125em white;
+	border-bottom-left-radius: 5vw;
+	border-top-left-radius: 5vw;
 }
 
 nav ul li:nth-of-type(2) {
 	border-left: solid 0.125em white;
+	border-bottom-right-radius: 5vw;
+	border-top-right-radius: 5vw;
 }
 
 nav ul li a {
@@ -48,22 +53,26 @@ nav ul li a img {
 	/* padding-bottom: 1vh; */
 }
 
+nav ul li:nth-of-type(1):hover,
+.active1 {
+	border-bottom-left-radius: 5vw;
+	border-top-left-radius: 5vw;
+	background-color: white;
+}
+
+nav ul li:nth-of-type(2):hover,
+.active2 {
+	border-bottom-right-radius: 5vw;
+	border-top-right-radius: 5vw;
+	background-color: white;
+}
+
 nav ul li:hover a img {
 	transition: 0.75s ease;
 	transform: rotateY(360deg);
 }
 
-nav ul a:hover,
-nav ul a:focus,
-.active {
-	cursor: pointer;
-	outline: none;
-	margin: 0;
-	/* border-radius: 0.5em; */
-	background-color: white;
-}
-
-article {
+nav ul a:hover article {
 	background-color: white;
 	width: 75%;
 	border-radius: 0.5em;
