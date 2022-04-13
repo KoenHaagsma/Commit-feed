@@ -1,32 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <%- include('partials/head'); %>
-    </head>
 
-    <body>
-        <%- include('partials/header'); %>
-        <h1>Commits</h1>
-        <% commits.forEach((commit) => { %>
-        <a id="commit-section" href="/profile/<%= commit.node.author.user.login.toLowerCase() %>">
-            <article>
+<head>
+    <%- include('partials/head'); %>
+</head>
+
+<body>
+    <%- include('partials/header'); %>
+    <h1>Commits</h1>
+    <% commits.forEach((commit) => { %>
+    <a id="commit-section" href="/profile/<%= commit.node.author.user.login.toLowerCase() %>">
+        <article>
+            <div>
                 <div>
-                    <div>
-                        <img
-                            id="avatar-homepage"
-                            src="<%= commit.node.author.user.avatarUrl %>"
-                            alt="<%= commit.node.author.name%> Image"
-                        />
-                        <h2><%= commit.node.author.name %></h2>
-                    </div>
-                    <div>
-                        <p><%= commit.node.committedDate.split('T')[0]%></p>
-                        <p><%= commit.node.committedDate.split('T')[1].split('Z')[0]%></p>
-                    </div>
+                    <img id="avatar-homepage" src="<%= commit.node.author.user.avatarUrl %>"
+                        alt="<%= commit.node.author.name%> Image" />
+                    <h2><%= commit.node.author.name %></h2>
                 </div>
-                <p><%= commit.node.message %></p>
-            </article>
-        </a>
-        <% }) %>
-    </body>
+                <div>
+                    <p><%= commit.node.committedDate.split('T')[0]%></p>
+                    <p><%= commit.node.committedDate.split('T')[1].split('Z')[0]%></p>
+                </div>
+            </div>
+            <p>"<%= commit.node.message %>"</p>
+        </article>
+    </a>
+    <% }) %>
+</body>
+
 </html>
