@@ -22,48 +22,43 @@ app.get('/profile', (req, res) => {
 app.get('/score', (req, res) => {
     graphqlAuth(`query MyQuery {
         organization(login: "cmda-minor-web") {
+          name
+          repository(name: "project-2-2122") {
             name
-            repositories(last: 1) {
-            edges {
+            forks(first: 100) {
+              edges {
                 node {
-                    name
-                forks(first: 100) {
-                    edges {
-                    node {
-                        owner {
-                            login
-                        }
-                        defaultBranchRef {
-                        repository {
-                            name
-                        }
-                        target {
-                            ... on Commit {
-                            history(first: 100) {
-                                edges {
-                                node {
-                                    author {
-                                    name
-                                    }
-                                    message
-                                }
-                                }
+                  owner {
+                    login
+                    avatarUrl
+                  }
+                  defaultBranchRef {
+                    target {
+                      ... on Commit {
+                        history(first: 100) {
+                          edges {
+                            node {
+                              author {
+                                name
+                              }
+                              message
                             }
-                            }
+                          }
                         }
-                        }
+                      }
                     }
-                    }
+                  }
+                  name
                 }
-                }
+              }
             }
-            }
+          }
         }
-    }`)
+      }`)
         .then((data) => {
             const stats = [];
             const names = [];
-            const baseURL = data.organization.repositories.edges[0].node.forks.edges;
+            const baseURL = data.organization.repository.forks.edges;
 
             // Add each author to names array to lowercase and replace spaces with underscores
             baseURL.forEach((user) => {
@@ -90,13 +85,15 @@ app.get('/score', (req, res) => {
 
             baseURL.forEach((repo) => {
                 stats.push({
-                    [`${repo.node.owner.login}/${repo.node.defaultBranchRef.repository.name}`]:
+                    [`${repo.node.owner.login}/${repo.node.name}`]:
                         repo.node.defaultBranchRef.target.history.edges.length,
                 });
             });
 
             const allStats = Object.assign({}, ...stats);
             const sortedAllStats = sortBasedOnValue(allStats);
+            console.log(sortedJustStudents);
+            console.log(sortedAllStats);
 
             res.render('scores.ejs', { person_commit_count: sortedAllStats, person_commit_count: sortedJustStudents });
         })
