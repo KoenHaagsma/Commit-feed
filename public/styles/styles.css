@@ -81,6 +81,34 @@ nav ul a:hover article {
     box-shadow: 0.5em 0.5em rgba(0, 0, 0, 0.05);
 }
 
+#commit-section {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	background-color: white;
+	width: 80%;
+	border-radius: 1vh;
+	padding: 0.5em 1em;
+	margin-bottom: 1.5em;
+	box-shadow: 0.5em 0.5em rgba(0, 0, 0, 0.05);
+}
+
+#commit-section>article>div:nth-of-type(1) {
+	display: flex;
+	flex-direction: row;
+}
+
+#commit-section>article>div:nth-of-type(1)>div:nth-of-type(1) {
+	display: flex;
+	justify-content: row;
+	width: 67%;
+}
+
+#commit-section>article>div:nth-of-type(1)>div:nth-of-type(2) {
+	display: flex;
+	width: 33%;
+	justify-content: flex-end;
+
 #commit-section > article > div:nth-of-type(1) {
     display: flex;
     flex-direction: row;
@@ -96,6 +124,51 @@ nav ul a:hover article {
     display: flex;
     width: 33%;
     justify-content: flex-end;
+}
+
+#commit-section>article>div:nth-of-type(1)>div:nth-of-type(2)>p {
+	background-color: #e7d2cc;
+	color: white;
+	padding: 1vh;
+	margin: 1vh;
+	border-radius: 0.75vh;
+	height: 20%;
+}
+
+#commit-section>article>div>div>img {
+	width: 2em;
+	height: auto;
+}
+
+#commit-section article div {
+	display: flex;
+	align-items: center;
+	margin-bottom: 1vh;
+}
+
+#commit-section:hover>article,
+#commit-section:hover,
+#commit-section>article:hover {
+	cursor: pointer;
+	background-color: #e7d2cc;
+}
+
+#commit-section:hover>article>div:nth-of-type(1)>div:nth-of-type(2)>p {
+	cursor: pointer;
+	background-color: white;
+	color: black;
+}
+
+
+#commit-section img {
+	width: 5em;
+	height: 5em;
+	margin-right: 3vw;
+	border-radius: 50%;
+}
+
+#commit-section>article>p {
+	font-style: italic;
 }
 
 /* Profile page */
@@ -226,12 +299,12 @@ nav ul a:hover article {
     padding: 0 2vh 2vh 0;
 }
 
-#profile section:nth-of-type(3) a div > p {
-    background-color: #e7d2cc;
-    color: white;
-    padding: 1vh;
-    margin: 1vh;
-    border-radius: 0.75vh;
+#profile section:nth-of-type(3) article div>p {
+	background-color: #e7d2cc;
+	color: white;
+	padding: 1vh;
+	margin: 1vh;
+	border-radius: 0.75vh;
 }
 
 /* Leaderboard page */
@@ -659,11 +732,11 @@ nav ul a:hover article {
 }
 
 @keyframes podium2 {
-    0%,
-    20% {
-        transform: translatey(-50%);
-        opacity: 0%;
-    }
+	0%,
+	20% {
+		transform: translatey(-50%);
+		opacity: 0%;
+  }
 
     80%,
     100% {

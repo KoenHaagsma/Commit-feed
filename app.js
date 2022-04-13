@@ -222,8 +222,7 @@ app.get('/score', (req, res) => {
 
             baseURL.forEach((repo) => {
                 stats.push({
-                    [`${repo.node.owner.login}/${repo.node.name}`]:
-                        repo.node.defaultBranchRef.target.history.edges.length,
+                    [`${repo.node.owner.login}/${repo.node.name}`]: repo.node.defaultBranchRef.target.history.edges.length,
                 });
             });
 
@@ -279,7 +278,10 @@ function sortBasedOnValue(obj) {
     });
 
     sortable.forEach((key, value) => {
-        sortedArray.push({ name: key[0], count: key[1] });
+        sortedArray.push({
+            name: key[0],
+            count: key[1]
+        });
     });
 
     return sortedArray;
