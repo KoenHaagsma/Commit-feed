@@ -7,7 +7,7 @@ body {
 	align-items: center;
 	flex-direction: column;
 	max-width: 75em;
-	font-family: "SF Pro", Arial;
+	font-family: 'SF Pro', Arial;
 }
 
 nav ul {
@@ -17,6 +17,7 @@ nav ul {
 	margin: 1.5vh 0;
 	padding: 0;
 	background-color: #e7d2cc;
+	border-radius: 5vw;
 }
 
 nav ul li {
@@ -27,10 +28,14 @@ nav ul li {
 
 nav ul li:nth-of-type(1) {
 	border-right: solid 0.125em white;
+	border-bottom-left-radius: 5vw;
+	border-top-left-radius: 5vw;
 }
 
 nav ul li:nth-of-type(2) {
 	border-left: solid 0.125em white;
+	border-bottom-right-radius: 5vw;
+	border-top-right-radius: 5vw;
 }
 
 nav ul li a {
@@ -48,25 +53,26 @@ nav ul li a img {
 	width: 2em;
 }
 
+nav ul li:nth-of-type(1):hover,
+.active1 {
+	border-bottom-left-radius: 5vw;
+	border-top-left-radius: 5vw;
+	background-color: white;
+}
+
+nav ul li:nth-of-type(2):hover,
+.active2 {
+	border-bottom-right-radius: 5vw;
+	border-top-right-radius: 5vw;
+	background-color: white;
+}
+
 nav ul li:hover a img {
 	transition: 0.75s ease;
 	transform: rotateY(360deg);
 }
 
-nav ul a:hover,
-nav ul a:focus,
-.active {
-	cursor: pointer;
-	outline: none;
-	margin: 0;
-	/* border-radius: 0.5em; */
-	background-color: white;
-}
-
-#commit-section {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
+nav ul a:hover article {
 	background-color: white;
 	width: 80%;
 	border-radius: 1vh;
@@ -75,23 +81,22 @@ nav ul a:focus,
 	box-shadow: 0.5em 0.5em rgba(0, 0, 0, 0.05);
 }
 
-#commit-section>article>div:nth-of-type(1) {
+#commit-section > article > div:nth-of-type(1) {
 	display: flex;
 	flex-direction: row;
 }
 
-#commit-section>article>div:nth-of-type(1)>div:nth-of-type(1) {
+#commit-section > article > div:nth-of-type(1) > div:nth-of-type(1) {
 	display: flex;
 	justify-content: row;
 	width: 67%;
 }
 
-#commit-section>article>div:nth-of-type(1)>div:nth-of-type(2) {
+#commit-section > article > div:nth-of-type(1) > div:nth-of-type(2) {
 	display: flex;
 	width: 33%;
 	justify-content: flex-end;
 }
-
 
 /* Profile page */
 #profile {
@@ -454,12 +459,11 @@ nav ul a:focus,
 	}
 }
 
-#commit-section:hover>article>div:nth-of-type(1)>div:nth-of-type(2)>p {
+#commit-section:hover > article > div:nth-of-type(1) > div:nth-of-type(2) > p {
 	cursor: pointer;
 	background-color: white;
 	color: black;
 }
-
 
 #commit-section img {
 	width: 5em;
