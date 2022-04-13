@@ -17,25 +17,12 @@ nav ul {
 	margin: 1.5vh 0;
 	padding: 0;
 	background-color: #e7d2cc;
-	border-radius: 5vw;
+	border-radius: 2em;
 }
 
 nav ul li {
 	text-decoration: none;
 	padding: 0;
-	border: solid 0.25em white;
-}
-
-nav ul li:nth-of-type(1) {
-	border-right: solid 0.125em white;
-	border-bottom-left-radius: 5vw;
-	border-top-left-radius: 5vw;
-}
-
-nav ul li:nth-of-type(2) {
-	border-left: solid 0.125em white;
-	border-bottom-right-radius: 5vw;
-	border-top-right-radius: 5vw;
 }
 
 nav ul li a {
@@ -47,38 +34,27 @@ nav ul li a {
 	flex-direction: column-reverse;
 	align-items: center;
 	width: 15vh;
+	opacity: 50%;
 }
 
 nav ul li a img {
 	width: 2em;
 }
 
-nav ul li:nth-of-type(1):hover,
-.active1 {
-	border-bottom-left-radius: 5vw;
-	border-top-left-radius: 5vw;
+.active {
+	/* background-color: white; */
 	background-color: white;
+	border-radius: 2em;
+	opacity: 100%;
 }
 
-nav ul li:nth-of-type(2):hover,
-.active2 {
-	border-bottom-right-radius: 5vw;
-	border-top-right-radius: 5vw;
-	background-color: white;
+nav ul li:hover a {
+	opacity: 100%;
 }
 
 nav ul li:hover a img {
 	transition: 0.75s ease;
 	transform: rotateY(360deg);
-}
-
-nav ul a:hover article {
-	background-color: white;
-	width: 80%;
-	border-radius: 1vh;
-	padding: 0.5em 1em;
-	margin-bottom: 1.5em;
-	box-shadow: 0.5em 0.5em rgba(0, 0, 0, 0.05);
 }
 
 #commit-section > article > div:nth-of-type(1) {
@@ -267,21 +243,36 @@ nav ul a:hover article {
 	background-color: white;
 }
 
-#leaderboard section:nth-of-type(1) div:nth-of-type(1) img,
 #leaderboard section:nth-of-type(1) div:nth-of-type(1) h2,
-#leaderboard section:nth-of-type(1) div:nth-of-type(1) p {
+#leaderboard section:nth-of-type(1) div:nth-of-type(1) p,
+#leaderboard section:nth-of-type(1) div:nth-of-type(1) img {
+	animation: bounce 1s infinite ease-out;
+	animation-delay: 2.5s;
+}
+
+#leaderboard section:nth-of-type(1) div:nth-of-type(2) h2,
+#leaderboard section:nth-of-type(1) div:nth-of-type(2) p,
+#leaderboard section:nth-of-type(1) div:nth-of-type(2) img {
+	animation: bounce 1s infinite ease-out;
+	animation-delay: 2.5s;
+}
+
+#leaderboard section:nth-of-type(1) div:nth-of-type(3) h2,
+#leaderboard section:nth-of-type(1) div:nth-of-type(3) p,
+#leaderboard section:nth-of-type(1) div:nth-of-type(3) img {
+	animation: bounce 1s infinite ease-out;
+	animation-delay: 2.5s;
+}
+
+#leaderboard section:nth-of-type(1) div:nth-of-type(1) {
 	animation: podium2 2.5s ease;
 }
 
-#leaderboard section:nth-of-type(1) div:nth-of-type(2) img,
-#leaderboard section:nth-of-type(1) div:nth-of-type(2) h2,
-#leaderboard section:nth-of-type(1) div:nth-of-type(2) p {
+#leaderboard section:nth-of-type(1) div:nth-of-type(2) {
 	animation: podium1 2.5s ease;
 }
 
-#leaderboard section:nth-of-type(1) div:nth-of-type(3) img,
-#leaderboard section:nth-of-type(1) div:nth-of-type(3) h2,
-#leaderboard section:nth-of-type(1) div:nth-of-type(3) p {
+#leaderboard section:nth-of-type(1) div:nth-of-type(3) {
 	animation: podium3 2.5s ease;
 }
 
@@ -421,7 +412,7 @@ nav ul a:hover article {
 
 @keyframes podium1 {
 	0% {
-		transform: translatey(-50%);
+		transform: translatey(-15%);
 		opacity: 0%;
 	}
 
@@ -435,7 +426,7 @@ nav ul a:hover article {
 @keyframes podium2 {
 	0%,
 	20% {
-		transform: translatey(-50%);
+		transform: translatey(-15%);
 		opacity: 0%;
 	}
 
@@ -449,7 +440,7 @@ nav ul a:hover article {
 @keyframes podium3 {
 	0%,
 	40% {
-		transform: translatey(-50%);
+		transform: translatey(-15%);
 		opacity: 0%;
 	}
 
@@ -474,4 +465,17 @@ nav ul a:hover article {
 
 #commit-section p {
 	font-style: italic;
+}
+
+@keyframes bounce {
+	0% {
+		transform: translateX(0%);
+	}
+	50% {
+		transform: translatey(-15%);
+	}
+
+	100% {
+		transform: translateX(0%);
+	}
 }

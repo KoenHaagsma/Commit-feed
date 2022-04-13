@@ -3,7 +3,7 @@ const trophy = document.querySelector('nav ul li:nth-of-type(2) a')
 const profile = document.querySelector('nav ul li:last-of-type a')
 
 if (window.location.pathname == '/') {
-	home.classList.add('active1')
+	home.classList.add('active')
 } else if (window.location.pathname == '/score') {
-	trophy.classList.add('active2')
+	trophy.classList.add('active')
 }
