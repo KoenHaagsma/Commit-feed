@@ -1,23 +1,81 @@
-
 require('dotenv').config();
 const express = require('express');
-const {
-    graphql
-} = require('@octokit/graphql');
+const { graphql } = require('@octokit/graphql');
 const graphqlAuth = graphql.defaults({
     headers: {
-        authorization: 'token ' + process.env.GRAPH_KEY
+        authorization: 'token ' + process.env.GRAPH_KEY,
     },
 });
 
-const app = express()
+const app = express();
 
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
 app.get('/', (req, res) => {
-    res.render('index')
+    graphqlAuth(`query MyQuery {
+        organization(login: "cmda-minor-web") {
+          name
+          repository(name: "project-2-2122") {
+            name
+            forks(first: 100) {
+              edges {
+                node {
+                  owner {
+                    login
+                    avatarUrl
+                  }
+                  defaultBranchRef {
+                    target {
+                      ... on Commit {
+                        history(first: 100) {
+                          edges {
+                            node {
+                              author {
+                                name
+                                user {
+                                  login
+                                  avatarUrl
+                                }
+                              }
+                              message
+                              committedDate
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                  name
+                }
+              }
+            }
+          }
+        }
+      }`).then((data) => {
+        const allCommits = [];
+        data.organization.repository.forks.edges.forEach((repo) => {
+            repo.node.defaultBranchRef.target.history.edges.forEach((commit) => {
+                const key = commit.node.author.name;
+                if (
+                    key === 'Robert Spier' ||
+                    key === 'ju5tu5' ||
+                    key === 'Justus Sturkenboom' ||
+                    commit.node.author.user === null ||
+                    !commit.node.author.user
+                ) {
+                    return;
+                }
+                allCommits.push(commit);
+            });
+        });
+        console.log(allCommits);
+        allCommits.sort((a, b) => {
+            return new Date(b.node.committedDate) - new Date(a.node.committedDate);
+        });
+        res.render('index', { commits: allCommits });
+    });
 });
 
 app.get('/profile/:author', (req, res) => {
@@ -107,6 +165,9 @@ app.get('/score', (req, res) => {
                             node {
                               author {
                                 name
+                                user {
+                                  login
+                                }
                               }
                               message
                             }
@@ -117,24 +178,34 @@ app.get('/score', (req, res) => {
                   }
                   name
                 }
-              }
+                }
             }
-          }
+            }
         }
     }`)
         .then((data) => {
             const stats = [];
             const names = [];
+            const studentsWithURL = [];
             const baseURL = data.organization.repository.forks.edges;
 
             // Add each author to names array to lowercase and replace spaces with underscores
             baseURL.forEach((user) => {
                 user.node.defaultBranchRef.target.history.edges.forEach((branch) => {
+                    if (
+                        !branch.node.author.user ||
+                        branch.node.author.user === null ||
+                        branch.node.author.user === undefined
+                    ) {
+                        return;
+                    }
                     names.push({
-                        name: branch.node.author.name.toLowerCase().replace(/ /g, '_'),
+                        name: branch.node.author.user.login,
                     });
                 });
             });
+
+            // branch.node.author.name.toLowerCase().replace(/ /g, '')
 
             // Count commit messages per student
             const count = names.reduce((sums, entry) => {
@@ -145,7 +216,7 @@ app.get('/score', (req, res) => {
             // Sort out teachers in count object
             const asArrayStudents = Object.entries(count);
             const filtered = asArrayStudents.filter(([key, value]) => {
-                return !(key === 'robert_spier' || key === 'ju5tu5' || key === 'justus_sturkenboom');
+                return !(key === 'roberrrt-s' || key === 'ju5tu5' || key === 'Justus Sturkenboom');
             });
             const justStudents = Object.fromEntries(filtered);
             const sortedJustStudents = sortBasedOnValue(justStudents);
@@ -159,10 +230,29 @@ app.get('/score', (req, res) => {
 
             const allStats = Object.assign({}, ...stats);
             const sortedAllStats = sortBasedOnValue(allStats);
-            console.log(sortedJustStudents);
-            console.log(sortedAllStats);
 
-            res.render('scores.ejs', { person_commit_count: sortedAllStats, person_commit_count: sortedJustStudents });
+            function getSingleStudentAvatar(object) {
+                return graphqlAuth(`query MyQuery {
+                    user(login: "${object.name}") {
+                        avatarUrl
+                    }
+                }`)
+                    .then((data) => {
+                        return {
+                            name: object.name,
+                            count: object.count,
+                            avatarUrl: data.user.avatarUrl,
+                        };
+                    })
+                    .catch((err) => console.log(err));
+            }
+
+            const allData = Promise.all(sortedJustStudents.map((object) => getSingleStudentAvatar(object)));
+            console.log(
+                allData.then((data) => {
+                    res.render('scores', { repo_commit_count: sortedAllStats, person_commit_count: data });
+                }),
+            );
         })
         .catch((err) => {
             console.error(err);
