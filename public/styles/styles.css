@@ -18,7 +18,7 @@ nav ul {
 	display: flex;
 	list-style: none;
 	justify-content: center;
-	margin: 1.5vh 0;
+	margin: 5vh 0 1.5vh;
 	padding: 0;
 	background-color: #e7d2cc;
 	border-radius: 2em;
@@ -98,7 +98,7 @@ nav ul li:hover a img {
 	flex-direction: column;
 }
 
-#commit-section>article>div:nth-of-type(1)>div:nth-of-type(2)>p {
+#commit-section > article > div:nth-of-type(1) > div:nth-of-type(2) > p {
 	background-color: #e7d2cc;
 	color: white;
 	padding: 1vh;
@@ -107,25 +107,29 @@ nav ul li:hover a img {
 	height: 20%;
 }
 
+#commit-section > article > div > div > img {
+	width: 2em;
+	height: auto;
+}
+
 #commit-section article div {
 	display: flex;
 	align-items: center;
 	margin-bottom: 1vh;
 }
 
-#commit-section:hover>article,
+#commit-section:hover > article,
 #commit-section:hover,
-#commit-section>article:hover {
+#commit-section > article:hover {
 	cursor: pointer;
 	background-color: #e7d2cc;
 }
 
-#commit-section:hover>article>div:nth-of-type(1)>div:nth-of-type(2)>p {
+#commit-section:hover > article > div:nth-of-type(1) > div:nth-of-type(2) > p {
 	cursor: pointer;
 	background-color: white;
 	color: black;
 }
-
 
 #commit-section img {
 	width: clamp(3em, 4.8vw, 4em);
@@ -175,8 +179,10 @@ nav ul li:hover a img {
 }
 
 #profile section:first-of-type div:first-of-type {
-	width: 30%;
-	position: relative;
+	width: 40%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 #profile section:first-of-type div:nth-of-type(2) {
@@ -191,11 +197,9 @@ nav ul li:hover a img {
 }
 
 #profile section:first-of-type img {
-	position: absolute;
-	width: 7.5vh;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	padding: 2vh;
+	width: 10vh;
+	border-radius: 50%;
 }
 
 #profile section:nth-of-type(2) {
@@ -246,7 +250,8 @@ nav ul li:hover a img {
 	box-shadow: 0.5em 0.5em rgba(0, 0, 0, 0.05);
 	padding: 0 0 0 2vh;
 	margin: 0.75em 0;
-	width: 100%;
+	width: 75%;
+	border-radius: 1vh;
 }
 
 #profile section:nth-of-type(3) a:hover {
@@ -254,7 +259,7 @@ nav ul li:hover a img {
 	background-color: #e7d2cc;
 }
 
-#profile section:nth-of-type(3) a:hover>div h2 {
+#profile section:nth-of-type(3) a:hover > div h2 {
 	text-decoration: underline;
 }
 
@@ -265,7 +270,29 @@ nav ul li:hover a img {
 	border-radius: 1vh;
 }
 
-#profile section:nth-of-type(3) a:hover>div p {
+#profile section:nth-of-type(3) a div p {
+	padding: 0;
+}
+
+#profile section:nth-of-type(3) a:hover div > div {
+	margin: 1vh;
+	color: black;
+	width: 15vh;
+	border-radius: 1vh;
+	background-color: white;
+}
+
+#profile section:nth-of-type(3) a div > div {
+	display: flex;
+	flex-direction: column;
+	margin: 1vh;
+	color: white;
+	width: 15vh;
+	border-radius: 1vh;
+	background-color: #e7d2cc;
+}
+
+#profile section:nth-of-type(3) a:hover > div p {
 	background-color: white;
 	color: black;
 }
@@ -287,7 +314,7 @@ nav ul li:hover a img {
 	padding: 0 2vh 2vh 0;
 }
 
-#profile section:nth-of-type(3) article div>p {
+#profile section:nth-of-type(3) article div > p {
 	background-color: #e7d2cc;
 	color: white;
 	padding: 1vh;
@@ -304,31 +331,49 @@ nav ul li:hover a img {
 	flex-direction: column;
 }
 
+#leaderboard section:nth-of-type(1) a {
+	text-decoration: none;
+	color: black;
+}
+
 #leaderboard section:nth-of-type(1) {
 	display: flex;
 	width: 95%;
 	justify-content: center;
 }
 
-#leaderboard section:nth-of-type(1) div {
+#leaderboard section:nth-of-type(1) a {
 	display: flex;
 	align-items: center;
 	flex-direction: column-reverse;
+	text-align: center;
 	width: 25%;
 	position: relative;
 }
 
-#leaderboard section:nth-of-type(1) div h2 {
+#leaderboard section:nth-of-type(1) a div {
+	text-align: left;
+}
+
+#leaderboard section:nth-of-type(1) a h2 {
 	margin: 0;
 	padding: 0;
+	font-size: 1.5vw;
 }
 
-#leaderboard section:nth-of-type(1) div img {
+#leaderboard section:nth-of-type(1) a img {
 	margin: 7.5vh 0 1vh 0;
+	width: 10vw;
 }
 
-#leaderboard section:nth-of-type(1) div p {
-	margin: 0 0 5vh;
+#leaderboard section:nth-of-type(1) a p,
+#leaderboard section:nth-of-type(1) a h2 {
+	margin: 0;
+	font-size: clamp(0.25em, 1.5vw, 2em);
+}
+
+#leaderboard section:nth-of-type(1) a p {
+	margin: 1vh 0 2.5vh;
 }
 
 #leaderboard section:nth-of-type(1) img {
@@ -338,66 +383,70 @@ nav ul li:hover a img {
 	background-color: white;
 }
 
-#leaderboard section:nth-of-type(1) div:nth-of-type(1) h2,
-#leaderboard section:nth-of-type(1) div:nth-of-type(1) p,
-#leaderboard section:nth-of-type(1) div:nth-of-type(1) img {
+#leaderboard section:nth-of-type(1) a:nth-of-type(1) h2,
+#leaderboard section:nth-of-type(1) a:nth-of-type(1) p,
+#leaderboard section:nth-of-type(1) a:nth-of-type(1) img {
 	animation: bounce 1s infinite ease-out;
 	animation-delay: 2.5s;
 }
 
-#leaderboard section:nth-of-type(1) div:nth-of-type(2) h2,
-#leaderboard section:nth-of-type(1) div:nth-of-type(2) p,
-#leaderboard section:nth-of-type(1) div:nth-of-type(2) img {
+#leaderboard section:nth-of-type(1) a:nth-of-type(2) h2,
+#leaderboard section:nth-of-type(1) a:nth-of-type(2) p,
+#leaderboard section:nth-of-type(1) a:nth-of-type(2) img {
 	animation: bounce 1s infinite ease-out;
 	animation-delay: 2.5s;
 }
 
-#leaderboard section:nth-of-type(1) div:nth-of-type(3) h2,
-#leaderboard section:nth-of-type(1) div:nth-of-type(3) p,
-#leaderboard section:nth-of-type(1) div:nth-of-type(3) img {
+#leaderboard section:nth-of-type(1) a:nth-of-type(3) h2,
+#leaderboard section:nth-of-type(1) a:nth-of-type(3) p,
+#leaderboard section:nth-of-type(1) a:nth-of-type(3) img {
 	animation: bounce 1s infinite ease-out;
 	animation-delay: 2.5s;
 }
 
-#leaderboard section:nth-of-type(1) div:nth-of-type(1) {
+#leaderboard section:nth-of-type(1) a:nth-of-type(1) {
 	animation: podium2 2.5s ease;
 }
 
-#leaderboard section:nth-of-type(1) div:nth-of-type(2) {
+#leaderboard section:nth-of-type(1) a:nth-of-type(2) {
 	animation: podium1 2.5s ease;
 }
 
-#leaderboard section:nth-of-type(1) div:nth-of-type(3) {
+#leaderboard section:nth-of-type(1) a:nth-of-type(3) {
 	animation: podium3 2.5s ease;
 }
 
-#leaderboard section:nth-of-type(1) div:nth-of-type(1) div {
+#leaderboard section:nth-of-type(1) a:nth-of-type(1) div {
 	height: 10vh;
 	background-color: silver;
 	width: 100%;
+	position: relative;
 }
 
-#leaderboard section:nth-of-type(1) div:nth-of-type(1) div::before {
+#leaderboard section:nth-of-type(1) a:nth-of-type(1) div::before {
 	content: '2';
 	position: absolute;
 	top: 50%;
+	left: 45%;
 	transform: translateY(-50%);
 	color: rgba(250, 250, 250, 0.5);
 	font-weight: bolder;
 	font-size: 5vh;
 }
 
-#leaderboard section:nth-of-type(1) div:nth-of-type(1) div::after {
+#leaderboard section:nth-of-type(1) a:nth-of-type(1) div::after {
 	content: '';
 	border-left: 1em solid transparent;
 	border-bottom: 1em solid silver;
 	position: absolute;
 	top: -1em;
 	opacity: 50%;
+	bottom: 0;
+	bottom: 10vh;
 	width: calc(100% - 1em);
 }
 
-#leaderboard section:nth-of-type(1) div:nth-of-type(2) div::after {
+#leaderboard section:nth-of-type(1) a:nth-of-type(2) div::after {
 	content: '';
 	border-left: 1em solid transparent;
 	border-right: 1em solid transparent;
@@ -405,51 +454,52 @@ nav ul li:hover a img {
 	height: 0;
 	opacity: 50%;
 	position: absolute;
-	top: -1em;
+	bottom: 15vh;
 	width: calc(100% - 2em);
 }
 
-#leaderboard section:nth-of-type(1) div:nth-of-type(2) div::before {
+#leaderboard section:nth-of-type(1) a:nth-of-type(2) div::before {
 	content: '1';
 	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
+	top: 30%;
+	left: 45%;
 	position: absolute;
 	color: rgba(250, 250, 250, 0.5);
 	font-weight: bolder;
 	font-size: 5vh;
 }
 
-#leaderboard section:nth-of-type(1) div:nth-of-type(2) div {
+#leaderboard section:nth-of-type(1) a:nth-of-type(2) div {
 	height: 15vh;
 	background-color: gold;
 	width: 100%;
+	position: relative;
 }
 
-#leaderboard section:nth-of-type(1) div:nth-of-type(3) div {
+#leaderboard section:nth-of-type(1) a:nth-of-type(3) div {
 	height: 5vh;
 	background-color: #cd7f32;
 	width: 100%;
+	position: relative;
 }
 
-#leaderboard section:nth-of-type(1) div:nth-of-type(3) div::before {
+#leaderboard section:nth-of-type(1) a:nth-of-type(3) div::before {
 	content: '3';
 	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
+	top: -10%;
+	left: 45%;
 	color: rgba(250, 250, 250, 0.5);
 	font-weight: bolder;
 	font-size: 5vh;
 }
 
-#leaderboard section:nth-of-type(1) div:nth-of-type(3) div::after {
+#leaderboard section:nth-of-type(1) a:nth-of-type(3) div::after {
 	content: '';
 	border-right: 1em solid transparent;
 	border-bottom: 1em solid #cd7f32;
 	opacity: 50%;
-	height: 0;
 	position: absolute;
-	top: -1em;
+	bottom: 5vh;
 	width: calc(100% - 1em);
 }
 
@@ -461,34 +511,53 @@ nav ul li:hover a img {
 	align-items: center;
 }
 
-#leaderboard section:nth-of-type(2) article {
+#leaderboard section:nth-of-type(2) a {
 	background-color: white;
+	border-radius: 2vh;
 	width: 90%;
 	display: flex;
 	padding: 2vh;
-	margin: 5vh 0;
+	margin: 2vh 0;
 	box-shadow: 0.5em 0.5em rgba(0, 0, 0, 0.05);
+	color: black;
+	text-decoration: none;
 }
 
-#leaderboard section:nth-of-type(2) article div:nth-of-type(1) {
+#leaderboard section:nth-of-type(1) a:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+#leaderboard section:nth-of-type(2) a:nth-of-type(1) {
+	margin: 5vh 0 2vh;
+}
+
+#leaderboard section:nth-of-type(2) a div:nth-of-type(1) h2 {
+	width: 15%;
+}
+
+#leaderboard section:nth-of-type(2) a div:nth-of-type(1) p {
+	margin-left: 2vh;
+}
+
+#leaderboard section:nth-of-type(2) a div:nth-of-type(1) {
 	display: flex;
 	align-items: center;
-	width: 30%;
-	justify-content: space-between;
+	width: 60%;
 }
 
-#leaderboard section:nth-of-type(2) article div:nth-of-type(2) {
+#leaderboard section:nth-of-type(2) a div:nth-of-type(2) {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	width: 70%;
+	width: 40%;
 }
 
-#leaderboard section:nth-of-type(2) article div:nth-of-type(2) {
+#leaderboard section:nth-of-type(2) a div:nth-of-type(2) {
 	font-weight: bolder;
 }
 
-#leaderboard section:nth-of-type(2) article div:first-of-type img {
+#leaderboard section:nth-of-type(2) a div:first-of-type img {
 	max-width: 2.5em;
 	max-height: 2.5em;
 	object-fit: fill;
@@ -496,12 +565,8 @@ nav ul li:hover a img {
 	background-color: green;
 }
 
-#leaderboard section:nth-of-type(2) article:hover {
-	cursor: pointer;
-	background-color: #e7d2cc;
-}
-
-#leaderboard section:nth-of-type(2) article:hover>div:nth-of-type(1) p {
+#leaderboard section:nth-of-type(2) a:hover > div:first-of-type p,
+#leaderboard section:nth-of-type(1) a:hover {
 	text-decoration: underline;
 }
 
@@ -519,7 +584,6 @@ nav ul li:hover a img {
 }
 
 @keyframes podium2 {
-
 	0%,
 	20% {
 		transform: translatey(-50%);
@@ -534,7 +598,6 @@ nav ul li:hover a img {
 }
 
 @keyframes podium3 {
-
 	0%,
 	40% {
 		transform: translatey(-50%);
@@ -545,6 +608,23 @@ nav ul li:hover a img {
 		transform: translateX(0%);
 		opacity: 100%;
 	}
+}
+
+#commit-section:hover > article > div:nth-of-type(1) > div:nth-of-type(2) > p {
+	cursor: pointer;
+	background-color: white;
+	color: black;
+}
+
+#commit-section img {
+	width: 5em;
+	height: 5em;
+	margin-right: 3vw;
+	border-radius: 50%;
+}
+
+#commit-section p {
+	font-style: italic;
 }
 
 #leaderboard section:nth-of-type(1) img {
@@ -695,15 +775,7 @@ nav ul li:hover a img {
 	object-fit: fill;
 	border-radius: 50%;
 	background-color: green;
-}
 
-#leaderboard section:nth-of-type(2) article:hover {
-	cursor: pointer;
-	background-color: #e7d2cc;
-}
-
-#leaderboard section:nth-of-type(2) article:hover>div:nth-of-type(1) p {
-	text-decoration: underline;
 }
 
 @keyframes podium1 {
@@ -746,6 +818,23 @@ nav ul li:hover a img {
 		transform: translateX(0%);
 		opacity: 100%;
 	}
+}
+
+#commit-section:hover > article > div:nth-of-type(1) > div:nth-of-type(2) > p {
+	cursor: pointer;
+	background-color: white;
+	color: black;
+}
+
+#commit-section img {
+	width: 5em;
+	height: 5em;
+	margin-right: 3vw;
+	border-radius: 50%;
+}
+
+#commit-section p {
+	font-style: italic;
 }
 
 @keyframes bounce {
