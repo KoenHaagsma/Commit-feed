@@ -48,9 +48,10 @@
                             <h2>
                                 <%= repo.name %>
                             </h2>
-                            <p> Last updated at:
-                                <%= repo.updatedAt.split('T')[0] %>
-                            </p>
+                            <div>
+                            <p> Last update:</p>
+                            <p> <%= repo.updatedAt.split('T')[0] %></p>
+                            </div>
                         </div>
                         <% if(repo.description) { %>
                             <p>

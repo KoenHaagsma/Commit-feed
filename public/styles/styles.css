@@ -8,13 +8,14 @@ body {
 	flex-direction: column;
 	max-width: 75em;
 	font-family: 'SF Pro', Arial;
+	overflow-x: hidden;
 }
 
 nav ul {
 	display: flex;
 	list-style: none;
 	justify-content: center;
-	margin: 1.5vh 0;
+	margin: 5vh 0 1.5vh;
 	padding: 0;
 	background-color: #e7d2cc;
 	border-radius: 2em;
@@ -151,8 +152,10 @@ nav ul li:hover a img {
 }
 
 #profile section:first-of-type div:first-of-type {
-	width: 30%;
-	position: relative;
+	width: 40%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 #profile section:first-of-type div:nth-of-type(2) {
@@ -167,11 +170,9 @@ nav ul li:hover a img {
 }
 
 #profile section:first-of-type img {
-	position: absolute;
-	width: 7.5vh;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	padding: 2vh;
+	width: 10vh;
+	border-radius: 50%;
 }
 
 #profile section:nth-of-type(2) {
@@ -242,6 +243,28 @@ nav ul li:hover a img {
 	border-radius: 1vh;
 }
 
+#profile section:nth-of-type(3) a div p {
+	padding: 0;
+}
+
+#profile section:nth-of-type(3) a:hover div > div {
+	margin: 1vh;
+	color: black;
+	width: 15vh;
+	border-radius: 1vh;
+	background-color: white;
+}
+
+#profile section:nth-of-type(3) a div > div {
+	display: flex;
+	flex-direction: column;
+	margin: 1vh;
+	color: white;
+	width: 15vh;
+	border-radius: 1vh;
+	background-color: #e7d2cc;
+}
+
 #profile section:nth-of-type(3) a:hover > div p {
 	background-color: white;
 	color: black;
@@ -296,21 +319,34 @@ nav ul li:hover a img {
 	display: flex;
 	align-items: center;
 	flex-direction: column-reverse;
+	text-align: center;
 	width: 25%;
 	position: relative;
+}
+
+#leaderboard section:nth-of-type(1) a div {
+	text-align: left;
 }
 
 #leaderboard section:nth-of-type(1) a h2 {
 	margin: 0;
 	padding: 0;
+	font-size: 1.5vw;
 }
 
 #leaderboard section:nth-of-type(1) a img {
 	margin: 7.5vh 0 1vh 0;
+	width: 10vw;
+}
+
+#leaderboard section:nth-of-type(1) a p,
+#leaderboard section:nth-of-type(1) a h2 {
+	margin: 0;
+	font-size: clamp(0.25em, 1.5vw, 2em);
 }
 
 #leaderboard section:nth-of-type(1) a p {
-	margin: 0 0 5vh;
+	margin: 1vh 0 2.5vh;
 }
 
 #leaderboard section:nth-of-type(1) img {
@@ -460,7 +496,6 @@ nav ul li:hover a img {
 	text-decoration: none;
 }
 
-#leaderboard section:nth-of-type(2) a:hover,
 #leaderboard section:nth-of-type(1) a:hover {
 	text-decoration: underline;
 	cursor: pointer;
@@ -481,14 +516,14 @@ nav ul li:hover a img {
 #leaderboard section:nth-of-type(2) a div:nth-of-type(1) {
 	display: flex;
 	align-items: center;
-	width: 40%;
+	width: 60%;
 }
 
 #leaderboard section:nth-of-type(2) a div:nth-of-type(2) {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	width: 70%;
+	width: 40%;
 }
 
 #leaderboard section:nth-of-type(2) a div:nth-of-type(2) {
@@ -503,7 +538,8 @@ nav ul li:hover a img {
 	background-color: green;
 }
 
-#leaderboard section:nth-of-type(2) a:hover > div:nth-of-type(1) p {
+#leaderboard section:nth-of-type(2) a:hover > div:first-of-type p,
+#leaderboard section:nth-of-type(1) a:hover {
 	text-decoration: underline;
 }
 
@@ -712,15 +748,6 @@ nav ul li:hover a img {
 	object-fit: fill;
 	border-radius: 50%;
 	background-color: green;
-}
-
-#leaderboard section:nth-of-type(2) article:hover {
-	cursor: pointer;
-	background-color: #e7d2cc;
-}
-
-#leaderboard section:nth-of-type(2) article:hover > div:nth-of-type(1) p {
-	text-decoration: underline;
 }
 
 @keyframes podium1 {
