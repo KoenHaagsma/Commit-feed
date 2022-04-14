@@ -4,18 +4,23 @@ _Insert picture/gif of full project UI_
 
 ## 📂 Assignment
 
-_Assignment explanation_
+Four days of creative exploration using the GitHub GraphQL API as the outset.
 
 ## 🧾 Table of contents
 
--   [About the project](##About-the-project)
-    -   [Built with](###Built-with)
--   [Getting started](##Getting-started)
-    -   [Installation](##Installation)
--   [Packages/Dependecies](##Packages/dependecies)
-    -   [Dependecies](##Dependecies)
-    -   [Dev dependecies](##Dev-dependecies)
--   [License](##License)
+- [⚙ Project name](#-project-name)
+  - [📂 Assignment](#-assignment)
+  - [🧾 Table of contents](#-table-of-contents)
+  - [📖 About the project](#-about-the-project)
+    - [First idea](#first-idea)
+  - [🛠 Built with](#-built-with)
+  - [🔍 Getting started](#-getting-started)
+  - [🔨 Installation](#-installation)
+  - [🧰 Packages/dependecies](#-packagesdependecies)
+    - [🧱 Dependecies](#-dependecies)
+    - [🧱 Dev dependecies](#-dev-dependecies)
+  - [� License](#-license)
+  - [👪 Contributers](#-contributers)
 
 ## 📖 About the project
 
@@ -24,7 +29,7 @@ Our first idea is to make a live feed of the commit messages of every contender 
 
 ## 🛠 Built with
 
-_Where is the application made with_
+This application is build with Node.js, Express, ejs and we used the GraphQl API.
 
 ## 🔍 Getting started
 
@@ -37,13 +42,13 @@ _Before you can start you need to follow the installation_
 2. Clone the repository
 
 ```
-git clone https://github.com/KoenHaagsma/TechTrack-Frontend-Applications.git
+git clone https://github.com/KoenHaagsma/Commit-feed.git
 ```
 
 3. Go to the cloned repository
 
 ```
-cd ../../Techtrack-Frontend-Applications
+cd ../../Commit-feed
 ```
 
 4. Install all packages
@@ -64,20 +69,22 @@ npm run dev
 
 ### 🧱 Dependecies
 
--   [Package name]()
+-   [@octokit/graphql](https://www.npmjs.com/package/@octokit/graphql)
+-   [dotenv](https://www.npmjs.com/package/dotenv)
+-   [ejs](https://www.npmjs.com/package/ejs)
+-   [express](https://www.npmjs.com/package/express)
 
 ### 🧱 Dev dependecies
 
--   [Package name]()
-
-## 📑 Sources
-
--   [Bronnen]()
+-   [nodemon](https://www.npmjs.com/package/nodemon)
 
 ## 🔖 License
 
-[![license](https://img.shields.io/github/license/DAVFoundation/captain-n3m0.svg?style=flat-square)]()
+[![license](https://img.shields.io/github/license/DAVFoundation/captain-n3m0.svg?style=flat-square)](https://github.com/KoenHaagsma/Commit-feed/blob/main/LICENSE)
 
 ## 👪 Contributers
 
-_Insert contributers and their role_
+- Koen Haagsma
+- Sam Boot
+- Danny Frelink
+- Lotte Koblens
