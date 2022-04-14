@@ -9,9 +9,9 @@ const graphqlAuth = graphql.defaults({
 
 const app = express();
 
-app.use(express.static('public'))
-app.set('view engine', 'ejs')
-app.set('views', './views')
+app.use(express.static('public'));
+app.set('view engine', 'ejs');
+app.set('views', './views');
 
 app.get('/', (req, res) => {
     graphqlAuth(`query MyQuery {
@@ -70,7 +70,6 @@ app.get('/', (req, res) => {
                 allCommits.push(commit);
             });
         });
-        console.log(allCommits);
         allCommits.sort((a, b) => {
             return new Date(b.node.committedDate) - new Date(a.node.committedDate);
         });
@@ -112,11 +111,11 @@ app.get('/profile/:author', (req, res) => {
           }
         }
     }`)
-        .then(data => {
+        .then((data) => {
             const baseUrl = data.user;
 
             const repoArray = [];
-            baseUrl.repositories.edges.forEach(repo => {
+            baseUrl.repositories.edges.forEach((repo) => {
                 return repoArray.push(repo.node);
             });
 
@@ -124,7 +123,7 @@ app.get('/profile/:author', (req, res) => {
             baseUrl.repositories.edges[0].node.defaultBranchRef.target.history.edges.forEach((user) => {
                 const username = user.node.author.name.split(' ').join('');
                 if (username.toLowerCase() === req.params.author) {
-                    commitArray.push(user)
+                    commitArray.push(user);
                 }
             });
 
@@ -135,12 +134,12 @@ app.get('/profile/:author', (req, res) => {
                 bio: baseUrl.bio,
                 profileRepositories: repoArray,
                 repoAmount: baseUrl.repositories.edges.length,
-                commitAmount: commitArray.length
-            }
+                commitAmount: commitArray.length,
+            };
 
             res.render('profile', { dataSet });
         })
-        .catch(err => console.log(err))
+        .catch((err) => console.log(err));
 });
 
 app.get('/score', (req, res) => {
@@ -222,7 +221,8 @@ app.get('/score', (req, res) => {
 
             baseURL.forEach((repo) => {
                 stats.push({
-                    [`${repo.node.owner.login}/${repo.node.name}`]: repo.node.defaultBranchRef.target.history.edges.length,
+                    [`${repo.node.owner.login}/${repo.node.name}`]:
+                        repo.node.defaultBranchRef.target.history.edges.length,
                 });
             });
 
@@ -246,11 +246,9 @@ app.get('/score', (req, res) => {
             }
 
             const allData = Promise.all(sortedJustStudents.map((object) => getSingleStudentAvatar(object)));
-            console.log(
-                allData.then((data) => {
-                    res.render('scores', { repo_commit_count: sortedAllStats, person_commit_count: data });
-                }),
-            );
+            allData.then((data) => {
+                res.render('scores', { repo_commit_count: sortedAllStats, person_commit_count: data });
+            });
         })
         .catch((err) => {
             console.error(err);
@@ -258,28 +256,28 @@ app.get('/score', (req, res) => {
 });
 
 app.use((req, res) => {
-	res.status(404).render('error404')
-})
+    res.status(404).render('error404');
+});
 
 app.listen(process.env.PORT, () => {
-	console.log(`Application started on port: http://localhost:${process.env.PORT}`)
-})
+    console.log(`Application started on port: http://localhost:${process.env.PORT}`);
+});
 
 // Sort Keys based on values given
 function sortBasedOnValue(obj) {
-	const sortable = []
-	const sortedArray = []
-	for (var single in obj) {
-		sortable.push([single, obj[single]])
-	}
+    const sortable = [];
+    const sortedArray = [];
+    for (var single in obj) {
+        sortable.push([single, obj[single]]);
+    }
 
-	sortable.sort((a, b) => {
-		return b[1] - a[1]
-	})
+    sortable.sort((a, b) => {
+        return b[1] - a[1];
+    });
     sortable.forEach((key, value) => {
         sortedArray.push({
             name: key[0],
-            count: key[1]
+            count: key[1],
         });
     });
 
