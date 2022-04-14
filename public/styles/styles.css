@@ -74,7 +74,6 @@ nav ul li:hover a img {
 	box-shadow: 0.5em 0.5em rgba(0, 0, 0, 0.05);
 	text-decoration: none;
 	color: black;
-	/* transition: all 0.5s ease-out; */
 	animation: slideInFromBottom 1.2s 1;
 }
 
@@ -98,7 +97,7 @@ nav ul li:hover a img {
 	flex-direction: column;
 }
 
-#commit-section > article > div:nth-of-type(1) > div:nth-of-type(2) > p {
+#commit-section>article>div:nth-of-type(1)>div:nth-of-type(2)>p {
 	background-color: #e7d2cc;
 	color: white;
 	padding: 1vh;
@@ -107,7 +106,7 @@ nav ul li:hover a img {
 	height: 20%;
 }
 
-#commit-section > article > div > div > img {
+#commit-section>article>div>div>img {
 	width: 2em;
 	height: auto;
 }
@@ -118,14 +117,14 @@ nav ul li:hover a img {
 	margin-bottom: 1vh;
 }
 
-#commit-section:hover > article,
+#commit-section:hover>article,
 #commit-section:hover,
-#commit-section > article:hover {
+#commit-section>article:hover {
 	cursor: pointer;
 	background-color: #e7d2cc;
 }
 
-#commit-section:hover > article > div:nth-of-type(1) > div:nth-of-type(2) > p {
+#commit-section:hover>article>div:nth-of-type(1)>div:nth-of-type(2)>p {
 	cursor: pointer;
 	background-color: white;
 	color: black;
@@ -259,22 +258,22 @@ nav ul li:hover a img {
 	background-color: #e7d2cc;
 }
 
-#profile section:nth-of-type(3) a:hover > div h2 {
+#profile section:nth-of-type(3) a:hover>div h2 {
 	text-decoration: underline;
 }
 
-#profile section:nth-of-type(2) div {
+/* #profile section:nth-of-type(2) div {
 	width: 30%;
 	background-color: white;
 	text-align: center;
 	border-radius: 1vh;
-}
+} */
 
 #profile section:nth-of-type(3) a div p {
 	padding: 0;
 }
 
-#profile section:nth-of-type(3) a:hover div > div {
+#profile section:nth-of-type(3) a:hover div>div {
 	margin: 1vh;
 	color: black;
 	width: 15vh;
@@ -282,7 +281,7 @@ nav ul li:hover a img {
 	background-color: white;
 }
 
-#profile section:nth-of-type(3) a div > div {
+#profile section:nth-of-type(3) a div>div {
 	display: flex;
 	flex-direction: column;
 	margin: 1vh;
@@ -290,11 +289,18 @@ nav ul li:hover a img {
 	width: 15vh;
 	border-radius: 1vh;
 	background-color: #e7d2cc;
+	padding: 0.25em;
 }
 
-#profile section:nth-of-type(3) a:hover > div p {
+#profile section:nth-of-type(3) a:hover>div p {
 	background-color: white;
 	color: black;
+}
+
+#profile section:nth-of-type(3) h2 {
+	overflow-wrap: break-word;
+	inline-size: 60%;
+	font-size: clamp(1em, 2.4vw, 1.5em);
 }
 
 #profile section:nth-of-type(3) h2,
@@ -311,10 +317,12 @@ nav ul li:hover a img {
 }
 
 #profile section:nth-of-type(3) p {
+	overflow-wrap: break-word;
+	inline-size: 95%;
 	padding: 0 2vh 2vh 0;
 }
 
-#profile section:nth-of-type(3) article div > p {
+#profile section:nth-of-type(3) article div>p {
 	background-color: #e7d2cc;
 	color: white;
 	padding: 1vh;
@@ -369,7 +377,7 @@ nav ul li:hover a img {
 #leaderboard section:nth-of-type(1) a p,
 #leaderboard section:nth-of-type(1) a h2 {
 	margin: 0;
-	font-size: clamp(0.25em, 1.5vw, 2em);
+	font-size: clamp(0.75em, 1.5vw, 2em);
 }
 
 #leaderboard section:nth-of-type(1) a p {
@@ -509,6 +517,19 @@ nav ul li:hover a img {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	animation: slideInFromBottomAndOpacity 4s 1;
+}
+
+@keyframes slideInFromBottomAndOpacity {
+
+	0%,
+	40% {
+		transform: translateY(500%);
+	}
+
+	100% {
+		transform: translateY(0);
+	}
 }
 
 #leaderboard section:nth-of-type(2) a {
@@ -565,7 +586,7 @@ nav ul li:hover a img {
 	background-color: green;
 }
 
-#leaderboard section:nth-of-type(2) a:hover > div:first-of-type p,
+#leaderboard section:nth-of-type(2) a:hover>div:first-of-type p,
 #leaderboard section:nth-of-type(1) a:hover {
 	text-decoration: underline;
 }
@@ -584,6 +605,7 @@ nav ul li:hover a img {
 }
 
 @keyframes podium2 {
+
 	0%,
 	20% {
 		transform: translatey(-50%);
@@ -598,6 +620,7 @@ nav ul li:hover a img {
 }
 
 @keyframes podium3 {
+
 	0%,
 	40% {
 		transform: translatey(-50%);
@@ -610,7 +633,7 @@ nav ul li:hover a img {
 	}
 }
 
-#commit-section:hover > article > div:nth-of-type(1) > div:nth-of-type(2) > p {
+#commit-section:hover>article>div:nth-of-type(1)>div:nth-of-type(2)>p {
 	cursor: pointer;
 	background-color: white;
 	color: black;
@@ -820,7 +843,7 @@ nav ul li:hover a img {
 	}
 }
 
-#commit-section:hover > article > div:nth-of-type(1) > div:nth-of-type(2) > p {
+#commit-section:hover>article>div:nth-of-type(1)>div:nth-of-type(2)>p {
 	cursor: pointer;
 	background-color: white;
 	color: black;
@@ -855,5 +878,26 @@ nav ul li:hover a img {
 	#commit-section>article>div:nth-of-type(1)>div:nth-of-type(2) {
 		display: flex;
 		flex-direction: row;
+	}
+}
+
+@media (max-width: 600px) {
+	span {
+		display: none;
+	}
+
+	#profile>section:nth-of-type(2) {
+		flex-direction: column;
+		width: 100%;
+		align-items: center;
+	}
+
+	#profile section:nth-of-type(2) div {
+		width: 95%;
+		margin-bottom: 1vh;
+	}
+
+	#profile section:nth-of-type(3) a {
+		width: 100%;
 	}
 }
