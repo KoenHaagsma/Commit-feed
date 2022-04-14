@@ -144,8 +144,6 @@ nav ul li:hover a img {
 #commit-section h2 {
 	font-size: clamp(1.5em, 2.4vw, 2em);
 	margin: 0;
-	inline-size: 70%;
-	overflow-wrap: break-word;
 }
 
 #commit-section>article>p:last-of-type {
@@ -884,6 +882,11 @@ nav ul li:hover a img {
 @media (max-width: 600px) {
 	span {
 		display: none;
+	}
+
+	#commit-section h2 {
+		inline-size: 70%;
+		overflow-wrap: break-word;
 	}
 
 	#profile>section:nth-of-type(2) {
