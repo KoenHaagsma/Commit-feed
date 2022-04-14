@@ -38,34 +38,25 @@ This application is build with Node.js, Express, ejs and we used the GraphQl API
 _Before you can start you need to follow the installation_
 
 ## 🔨 Installation
-
 1. Open the terminal, or use the terminal in your IDE
 
 2. Clone the repository
-
 ```
 git clone https://github.com/KoenHaagsma/Commit-feed.git
 ```
-
 3. Go to the cloned repository
-
 ```
-cd ../../Commit-feed
+cd Commit-feed
 ```
-
 4. Install all packages
-
 ```
 npm install || npm i
 ```
-
 5. Start the application for development
-
 ```
 npm run dev
 ```
-
-6. Open de server and go to the browser: [Localhost](http://localhost:3000/). If this doesn't work change your port to another port
+6. Open de server and go to the browser: [Localhost:8000](http://localhost:8000/). If this doesn't work change your port to another port
 
 ## 🧰 Packages/dependecies
 
