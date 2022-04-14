@@ -1,4 +1,4 @@
-# ⚙ Project name
+# ⚙ Commit Feed for project 2 of the minor
 
 <img src="/public/images/home-commits.png" width="650" alt="Homepage, feed of latetst commits">
 <img src="/public/images/leaderboard.png" width="650" alt="Leaderboard">
