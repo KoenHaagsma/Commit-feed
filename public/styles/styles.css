@@ -10,6 +10,10 @@ body {
 	font-family: 'SF Pro', Arial;
 }
 
+body>h1 {
+	text-align: center;
+}
+
 nav ul {
 	display: flex;
 	list-style: none;

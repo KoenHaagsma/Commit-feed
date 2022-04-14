@@ -1,6 +1,8 @@
 # ⚙ Project name
 
 _Insert picture/gif of full project UI_
+<img src="/public/images/home-commits.png" width="650" alt="Homepage, feed of latetst commits">
+<img src="/public/images/leaderboard.png" width="650" alt="Leaderboard">
 
 ## 📂 Assignment
 
@@ -19,7 +21,7 @@ Four days of creative exploration using the GitHub GraphQL API as the outset.
   - [🧰 Packages/dependecies](#-packagesdependecies)
     - [🧱 Dependecies](#-dependecies)
     - [🧱 Dev dependecies](#-dev-dependecies)
-  - [� License](#-license)
+  - [🔖 License](#-license)
   - [👪 Contributers](#-contributers)
 
 ## 📖 About the project

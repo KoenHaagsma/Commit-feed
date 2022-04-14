@@ -7,7 +7,7 @@
 
 <body>
     <%- include('partials/header'); %>
-    <h1>Commits</h1>
+    <h1>What are the latest commits?</h1>
     <% commits.forEach((commit) => { %>
     <a id="commit-section" href="/profile/<%= commit.node.author.user.login.toLowerCase() %>">
         <article>
